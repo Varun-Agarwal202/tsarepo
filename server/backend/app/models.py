@@ -4,8 +4,8 @@ from django.conf import settings
 class Business(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     reviews = models.JSONField(default=list, blank=True)  # List of reviews
     place_id = models.CharField(max_length=255, unique=True)
     types = models.JSONField(default=list, blank=True)  # List of types/categories

@@ -7,6 +7,8 @@ from .views import (
     user_bookmarks,
     get_businesses,
     my_profile,
+    featured_resources,
+    submit_resource,
 )
 
 urlpatterns = [
@@ -16,4 +18,6 @@ urlpatterns = [
     path('businesses/', get_businesses, name='get_businesses'),
     path('user_bookmarks/', user_bookmarks, name='user_bookmarks'),
     path('my_profile/', my_profile, name='my_profile'),
+    path('resources/featured/', featured_resources, name='featured_resources'),
+    path('submissions/', submit_resource, name='submit_resource'),
 ]

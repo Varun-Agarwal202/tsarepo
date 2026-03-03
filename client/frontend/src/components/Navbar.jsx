@@ -14,10 +14,6 @@ const Navbar = () => {
       document.documentElement.setAttribute('data-theme', 'dark')
       document.documentElement.classList.add('dark')
       setIsDark(true)
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light')
-      document.documentElement.classList.remove('dark')
-      setIsDark(false)
     }
   }, [])
 
@@ -42,17 +38,16 @@ const Navbar = () => {
           onClick={() => navigate('/')}
           className="text-2xl font-semibold dark:text-white"
         >
-          BusinessFinder
+          Community Resource Hub
         </button>
 
         <div className="flex md:order-2 space-x-3">
           <button
-            onClick={() => navigate('/signup')}
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700"
+            onClick={() => navigate('/submit')}
+            className="text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg text-sm px-4 py-2"
           >
-            Get started
+            Submit Resource
           </button>
-
           <button
             onClick={toggleTheme}
             className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5"
@@ -76,23 +71,43 @@ const Navbar = () => {
         <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
           <ul className="flex flex-col md:flex-row md:space-x-8 font-medium">
             <li>
-              <button onClick={() => navigate('/')} className="py-2 px-3 dark:text-white">
+              <button
+                onClick={() => navigate('/')}
+                className="py-2 px-3 dark:text-white"
+              >
                 Home
               </button>
             </li>
             <li>
-              <button onClick={() => navigate('/about')} className="py-2 px-3 dark:text-white">
-                About
-              </button>
-            </li>
-            <li>
-              <button onClick={() => navigate('/directory')} className="py-2 px-3 dark:text-white">
+              <button
+                onClick={() => navigate('/directory')}
+                className="py-2 px-3 dark:text-white"
+              >
                 Directory
               </button>
             </li>
             <li>
-              <button onClick={() => navigate('/contact')} className="py-2 px-3 dark:text-white">
+              <button
+                onClick={() => navigate('/about')}
+                className="py-2 px-3 dark:text-white"
+              >
+                About
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => navigate('/contact')}
+                className="py-2 px-3 dark:text-white"
+              >
                 Contact
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => navigate('/reference')}
+                className="py-2 px-3 dark:text-white"
+              >
+                Reference
               </button>
             </li>
           </ul>

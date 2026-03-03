@@ -150,42 +150,10 @@ const HomeUser = () => {
     }
   };
 
-  function getCookie(name) {
-    const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
-    return v ? v.pop() : '';
-  }
-
-  // updated addBookmark that sends auth (token preferred) and updates UI per-user
-  const addBookmark = async (placeId) => {
+  // Simple bookmark toggle (works without auth, saves to localStorage)
+  const addBookmark = (placeId) => {
     const already = bookmarkedIds.includes(placeId);
-
-    // optimistic UI update
     setBookmarkedIds(prev => (already ? prev.filter(id => id !== placeId) : [...prev, placeId]));
-
-    const token = localStorage.getItem('authToken');
-    const headers = { 'Content-Type': 'application/json' };
-    if (token) headers.Authorization = `Token ${token}`;
-    else headers['X-CSRFToken'] = getCookie('csrftoken');
-
-    try {
-      const res = await fetch('http://localhost:8000/api/add_bookmark/', {
-        method: 'POST',
-        credentials: token ? undefined : 'include',
-        headers,
-        body: JSON.stringify({ business: placeId }),
-      });
-
-      if (!res.ok) {
-        throw new Error(`Bookmark request failed: ${res.status}`);
-      }
-      const data = await res.json();
-      console.log('Bookmark response:', data);
-    } catch (err) {
-      console.error('Bookmark error:', err);
-      // revert optimistic change
-      setBookmarkedIds(prev => (already ? [...prev, placeId] : prev.filter(id => id !== placeId)));
-      if (!isAuthenticated) alert('Please log in to save bookmarks.');
-    }
   };
 
   const center = effectiveLocation

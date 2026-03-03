@@ -1,19 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import {Routes, Route} from 'react-router-dom'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
 import Directory from './pages/Directory'
-import BusinessPage from './pages/BusinessPage'
+import SubmitResource from './pages/SubmitResource'
+import Reference from './pages/Reference'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import BusinessPage from './pages/BusinessPage'
 import Services from './pages/Services'
+import './App.css'
 
 function App() {
-
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -24,6 +22,8 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/services" element={<Services />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/submit" element={<SubmitResource />} />
+      <Route path="/reference" element={<Reference />} />
       <Route path="*" element={<h2>Page Not Found</h2>} />
     </Routes>
   )

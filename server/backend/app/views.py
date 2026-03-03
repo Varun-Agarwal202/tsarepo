@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 import requests
 from django.db.models import Q
 from django.db import connection
@@ -214,3 +215,90 @@ def my_profile(request):
         profile.save()
         return JsonResponse({'success': True, 'role': profile.role})
     return JsonResponse({'error': 'invalid role'}, status=400)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def nearby_businesses(request):
+    """Fetch nearby businesses from Google Places API"""
+    # This function is an alias for fetch_businesses - use that endpoint instead
+    # Keeping for backwards compatibility
+    return fetch_businesses(request)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def featured_resources(request):
+    """Get the same 5 businesses for community spotlight (ordered by id)"""
+    # Get the first 5 businesses ordered by id for consistency
+    businesses = Business.objects.all().order_by('id')[:5]
+    
+    if len(businesses) == 0:
+        return JsonResponse([], safe=False)
+    
+    results = []
+    for business in businesses:
+        results.append({
+            'id': business.id,
+            'place_id': business.place_id,
+            'name': business.name,
+            'address': business.address,
+            'rating': business.rating,
+            'category': business.types[0] if business.types else 'General',
+            'description': business.special_offers or f"{business.name} located at {business.address}",
+            'phone': business.contact_number,
+            'email': None,  # Businesses don't have email in current model
+            'website': business.website,
+            'photo': business.photos[0] if business.photos else None,
+        })
+    
+    return JsonResponse(results, safe=False)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def submit_resource(request):
+    """Submit a new community resource for review"""
+    data = request.data
+    
+    # Validate required fields
+    required_fields = ['name', 'category', 'description', 'submitter_name', 'submitter_email']
+    for field in required_fields:
+        if not data.get(field):
+            return JsonResponse({'error': f'Missing required field: {field}'}, status=400)
+    
+    # Create a new Business entry (or you could create a separate ResourceSubmission model)
+    # For now, we'll create it as a Business with a special flag
+    try:
+        # Generate a unique place_id for user-submitted resources
+        import uuid
+        place_id = f"user_submitted_{uuid.uuid4().hex[:12]}"
+        
+        # Build business data, only including optional fields if they have values
+        business_data = {
+            'name': data['name'],
+            'address': data.get('address', 'Address not provided'),
+            'place_id': place_id,
+            'types': [data['category']],
+            'special_offers': data['description'],
+            'latitude': None,  # Explicitly set to None for user-submitted resources
+            'longitude': None,  # Explicitly set to None for user-submitted resources
+            'rating': None,  # New submissions start with no rating
+            'user_ratings_total': 0,
+        }
+        
+        # Only add optional fields if they have non-empty values
+        if data.get('phone'):
+            business_data['contact_number'] = data['phone']
+        if data.get('website'):
+            business_data['website'] = data['website']
+        
+        business = Business.objects.create(**business_data)
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'Thank you! Your resource submission has been received and will be reviewed.',
+            'id': business.id
+        }, status=201)
+    except Exception as e:
+        return JsonResponse({'error': f'Failed to submit resource: {str(e)}'}, status=500)

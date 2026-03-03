@@ -1,67 +1,51 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import RootLayout from '../layouts/RootLayout'
+import React, { useState } from 'react';
+import RootLayout from '../layouts/RootLayout';
 
-const Contact = () => {
-  const navigate = useNavigate()
-  const [formData, setFormData] = useState({
-    name: '',
-    category: '',
-    description: '',
-    phone: '',
-    email: '',
-    address: '',
-    website: '',
-    submitter_name: '',
-    submitter_email: '',
-  })
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState('')
-  const [submitting, setSubmitting] = useState(false)
+export default function SubmitResource() {
+  const [form, setForm] = useState({
+    name: '', category: '', description: '', phone: '', email: '', address: '', website: '',
+    submitter_name: '', submitter_email: ''
+  });
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError('')
-    setMessage('')
-    setSubmitting(true)
+    e.preventDefault();
+    setError('');
+    setMessage('');
+    setSubmitting(true);
 
     try {
       const res = await fetch('http://localhost:8000/api/submissions/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
+        body: JSON.stringify(form),
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       if (res.ok) {
-        setMessage('Thank you! Your resource submission has been received and will be reviewed.')
-        setFormData({
-          name: '',
-          category: '',
-          description: '',
-          phone: '',
-          email: '',
-          address: '',
-          website: '',
-          submitter_name: '',
-          submitter_email: '',
-        })
+        setMessage('Thank you! Your resource submission has been received and will be reviewed.');
+        setForm({
+          name: '', category: '', description: '', phone: '', email: '', address: '', website: '',
+          submitter_name: '', submitter_email: ''
+        });
       } else {
-        setError(data.error || 'Failed to submit resource. Please try again.')
+        setError(data.error || 'Failed to submit resource. Please try again.');
       }
     } catch (err) {
-      setError('Network error. Please check your connection and try again.')
-      console.error('Submit error:', err)
+      setError('Network error. Please check your connection and try again.');
+      console.error('Submit error:', err);
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -95,7 +79,7 @@ const Contact = () => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
+              value={form.name}
               onChange={handleChange}
               placeholder="e.g., Community Food Bank"
               required
@@ -110,7 +94,7 @@ const Contact = () => {
             <select
               id="category"
               name="category"
-              value={formData.category}
+              value={form.category}
               onChange={handleChange}
               required
               className="bf-input w-full"
@@ -133,7 +117,7 @@ const Contact = () => {
             <textarea
               id="description"
               name="description"
-              value={formData.description}
+              value={form.description}
               onChange={handleChange}
               placeholder="Describe what this resource offers..."
               required
@@ -151,7 +135,7 @@ const Contact = () => {
                 type="tel"
                 id="phone"
                 name="phone"
-                value={formData.phone}
+                value={form.phone}
                 onChange={handleChange}
                 placeholder="(555) 123-4567"
                 className="bf-input w-full"
@@ -166,7 +150,7 @@ const Contact = () => {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
+                value={form.email}
                 onChange={handleChange}
                 placeholder="resource@example.com"
                 className="bf-input w-full"
@@ -182,7 +166,7 @@ const Contact = () => {
               type="text"
               id="address"
               name="address"
-              value={formData.address}
+              value={form.address}
               onChange={handleChange}
               placeholder="123 Main St, City, State"
               className="bf-input w-full"
@@ -197,7 +181,7 @@ const Contact = () => {
               type="url"
               id="website"
               name="website"
-              value={formData.website}
+              value={form.website}
               onChange={handleChange}
               placeholder="https://example.com"
               className="bf-input w-full"
@@ -215,7 +199,7 @@ const Contact = () => {
                   type="text"
                   id="submitter_name"
                   name="submitter_name"
-                  value={formData.submitter_name}
+                  value={form.submitter_name}
                   onChange={handleChange}
                   placeholder="John Doe"
                   required
@@ -231,7 +215,7 @@ const Contact = () => {
                   type="email"
                   id="submitter_email"
                   name="submitter_email"
-                  value={formData.submitter_email}
+                  value={form.submitter_email}
                   onChange={handleChange}
                   placeholder="you@example.com"
                   required
@@ -251,7 +235,5 @@ const Contact = () => {
         </form>
       </main>
     </div>
-  )
+  );
 }
-
-export default Contact

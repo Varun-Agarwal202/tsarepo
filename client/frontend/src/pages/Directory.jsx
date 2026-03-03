@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faMapMarkerAlt, faStar, faSearch } from '@fortawesome/free-solid-svg-icons'
 import RootLayout from '../layouts/RootLayout'
 import { AuthContext } from '../context/AuthContext'
+import Navbar from '../components/Navbar'
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 
 const Directory = () => {
   const navigate = useNavigate()
@@ -20,6 +22,14 @@ const Directory = () => {
   const [locationError, setLocationError] = useState(null)
   const [radiusKm, setRadiusKm] = useState(10)
   const [nearOnly, setNearOnly] = useState(true)
+  const [resources, setResources] = useState([])
+  const [category, setCategory] = useState('')
+  const [center, setCenter] = useState({ lat: 40.7128, lng: -74.0060 }) // default to NYC
+  const [selectedResource, setSelectedResource] = useState(null)
+  const [selectedMapPin, setSelectedMapPin] = useState(null)
+  const [mapListings, setMapListings] = useState([]) // Google Places results for map only
+  const mapRef = useRef(null)
+  const resourceRefs = useRef({})
 
   const effectiveLocation = userLocation ?? (() => {
     const stored = localStorage.getItem('userLocation')
@@ -40,6 +50,7 @@ const Directory = () => {
         const loc = { latitude: pos.coords.latitude, longitude: pos.coords.longitude }
         setUserLocation(loc)
         localStorage.setItem('userLocation', JSON.stringify(loc))
+        setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude }) // Update center for map
         setLocationLoading(false)
       },
       (err) => {
@@ -245,6 +256,55 @@ const Directory = () => {
       setBookmarkedIds(prev => (already ? [...prev, placeId] : prev.filter(id => id !== placeId)))
       if (!isAuthenticated) alert('Please log in to save bookmarks.')
     }
+  }
+
+  useEffect(() => {
+    let url = 'http://localhost:8000/api/resources/?'
+    if (category) url += `category=${category}&`
+    fetch(url).then(r => r.json()).then(data => setResources(data.results || data))
+  }, [category])
+
+  // Fetch nearby businesses from Google Places when location/center changes
+  useEffect(() => {
+    if (!center) return
+    
+    const fetchNearbyBusinesses = async () => {
+      try {
+        const res = await fetch('http://localhost:8000/api/nearby_businesses/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            latitude: center.lat,
+            longitude: center.lng,
+            radius: radiusKm * 1000, // convert km to meters
+          }),
+        })
+        if (res.ok) {
+          const data = await res.json()
+          setMapListings(data.results || [])
+        }
+      } catch (err) {
+        console.error('Failed to fetch nearby businesses for map:', err)
+      }
+    }
+
+    fetchNearbyBusinesses()
+  }, [center, radiusKm])
+
+  // Scroll to resource when clicked from map
+  const handlePinClick = (resource) => {
+    setSelectedMapPin(resource.id)
+    setSelectedResource(resource)
+    // Scroll to the resource in the list
+    if (resourceRefs.current[resource.id]) {
+      resourceRefs.current[resource.id].scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
+  // Highlight resource when clicked in list
+  const handleResourceClick = (resource) => {
+    setSelectedResource(resource)
+    setSelectedMapPin(resource.id)
   }
 
   return (
@@ -601,6 +661,39 @@ const Directory = () => {
               })()}
             </>
         )}
+      </div>
+
+      {/* Map Section - Always show map on the right */}
+      <div className="h-full lg:block lg:w-1/2">
+        <LoadScript googleMapsApiKey="AIzaSyCoxkur1IMrFgWYnTrdWANhisU2VBM9HaQ">
+          <GoogleMap
+            mapContainerStyle={{ height: "100%", width: "100%" }}
+            center={center}
+            zoom={15}
+            ref={mapRef}
+          >
+            <Marker position={center} title="Your Location" />
+            {mapListings.map((business) => (
+              <Marker
+                key={business.place_id}
+                position={{ lat: business.geometry.location.lat, lng: business.geometry.location.lng }}
+                onClick={() => handlePinClick(business)}
+                icon={selectedMapPin === business.place_id ? 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' : undefined}
+              />
+            ))}
+            {selectedMapPin && selectedResource && selectedResource.geometry && (
+              <InfoWindow
+                position={{ lat: selectedResource.geometry.location.lat, lng: selectedResource.geometry.location.lng }}
+                onCloseClick={() => setSelectedMapPin(null)}
+              >
+                <div className="text-sm p-2">
+                  <h4 className="font-bold">{selectedResource.name}</h4>
+                  <p className="text-xs">{selectedResource.formatted_address}</p>
+                </div>
+              </InfoWindow>
+            )}
+          </GoogleMap>
+        </LoadScript>
       </div>
         </div>
       </main>
