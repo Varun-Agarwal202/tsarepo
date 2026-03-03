@@ -15,6 +15,56 @@ const Directory = () => {
   const [error, setError] = useState(null)
   const [filter, setFilter] = useState('')
   const [bookmarkedIds, setBookmarkedIds] = useState([])
+  const [userLocation, setUserLocation] = useState(null)
+  const [locationLoading, setLocationLoading] = useState(true)
+  const [locationError, setLocationError] = useState(null)
+  const [radiusKm, setRadiusKm] = useState(10)
+  const [nearOnly, setNearOnly] = useState(true)
+
+  const effectiveLocation = userLocation ?? (() => {
+    const stored = localStorage.getItem('userLocation')
+    if (!stored) return null
+    try { return JSON.parse(stored) } catch { return null }
+  })()
+
+  const requestLocation = () => {
+    setLocationError(null)
+    if (!navigator.geolocation) {
+      setLocationError('Geolocation is not supported by your browser.')
+      setLocationLoading(false)
+      return
+    }
+    setLocationLoading(true)
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const loc = { latitude: pos.coords.latitude, longitude: pos.coords.longitude }
+        setUserLocation(loc)
+        localStorage.setItem('userLocation', JSON.stringify(loc))
+        setLocationLoading(false)
+      },
+      (err) => {
+        console.error('Location error:', err)
+        setLocationError('Location unavailable. Turn on location to filter nearby results.')
+        setLocationLoading(false)
+      },
+      { enableHighAccuracy: false, maximumAge: Infinity, timeout: 20000 }
+    )
+  }
+
+  // Haversine distance in km
+  const distanceKm = (a, b) => {
+    const R = 6371
+    const dLat = ((b.latitude - a.latitude) * Math.PI) / 180
+    const dLon = ((b.longitude - a.longitude) * Math.PI) / 180
+    const lat1 = (a.latitude * Math.PI) / 180
+    const lat2 = (b.latitude * Math.PI) / 180
+    const sinDLat = Math.sin(dLat / 2)
+    const sinDLon = Math.sin(dLon / 2)
+    const h =
+      sinDLat * sinDLat +
+      Math.cos(lat1) * Math.cos(lat2) * sinDLon * sinDLon
+    return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)))
+  }
 
   // Load bookmarks if authenticated
   useEffect(() => {
@@ -41,6 +91,17 @@ const Directory = () => {
       loadBookmarks()
     }
   }, [isAuthenticated])
+
+  // Load (or request) location once
+  useEffect(() => {
+    const stored = localStorage.getItem('userLocation')
+    if (stored) {
+      try { setUserLocation(JSON.parse(stored)) } catch { /* ignore */ }
+      setLocationLoading(false)
+      return
+    }
+    requestLocation()
+  }, [])
 
   const getListings = async (q = '', type = '') => {
     setError(null)
@@ -99,6 +160,42 @@ const Directory = () => {
       setLoading(false)
       setIsSearching(false)
     }
+  }
+
+  const withDistance = (arr) => {
+    if (!effectiveLocation) return arr.map(b => ({ ...b, _distanceKm: null }))
+    return arr.map(b => {
+      const lat = b?.latitude
+      const lng = b?.longitude
+      if (typeof lat !== 'number' || typeof lng !== 'number') return { ...b, _distanceKm: null }
+      const d = distanceKm(effectiveLocation, { latitude: lat, longitude: lng })
+      return { ...b, _distanceKm: d }
+    })
+  }
+
+  const applyNearFilterAndSort = (arr) => {
+    const enriched = withDistance(arr)
+    if (nearOnly && effectiveLocation) {
+      return enriched
+        .filter(b => b._distanceKm == null ? false : b._distanceKm <= radiusKm)
+        .sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
+    }
+    // default sort: nearest first (if we have location), otherwise leave as-is
+    if (effectiveLocation) {
+      return enriched.sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
+    }
+    return enriched
+  }
+
+  const splitBookmarksFirst = (arr) => {
+    if (!isAuthenticated || bookmarkedIds.length === 0) return { bookmarked: [], rest: arr }
+    const bookmarked = []
+    const rest = []
+    for (const b of arr) {
+      if (b?.place_id && bookmarkedIds.includes(b.place_id)) bookmarked.push(b)
+      else rest.push(b)
+    }
+    return { bookmarked, rest }
   }
 
   useEffect(() => {
@@ -160,29 +257,85 @@ const Directory = () => {
           <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Business Directory
           </h1>
-          <p className="text-gray-400">Discover and explore local businesses in your area</p>
+          <p className="text-slate-600 dark:text-slate-400">Discover and explore local businesses in your area</p>
         </div>
 
         {/* Search and Filter Section */}
         <div className="bf-card mb-8 p-6">
+          {/* Near me controls */}
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setNearOnly(v => !v)}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium border transition-colors ${
+                  nearOnly
+                    ? 'bg-sky-500/20 border-sky-400/50 text-sky-700 dark:text-sky-200'
+                    : 'bg-transparent border-slate-500/40 text-slate-700 dark:text-slate-300'
+                }`}
+                title="Toggle filtering to nearby results"
+              >
+                {nearOnly ? 'Near me: ON' : 'Near me: OFF'}
+              </button>
+
+              <div className="flex items-center gap-2">
+                <label htmlFor="radius-km" className="text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide">
+                  Radius
+                </label>
+                <input
+                  id="radius-km"
+                  type="number"
+                  min="1"
+                  max="100"
+                  value={radiusKm}
+                  onChange={(e) => setRadiusKm(Number(e.target.value) || 1)}
+                  className="bf-input w-24 py-2"
+                />
+                <span className="text-xs text-slate-600 dark:text-slate-400">km</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={requestLocation}
+                className="bf-button-primary"
+                disabled={locationLoading}
+                style={{ padding: '0.5rem 0.9rem', fontSize: '0.8rem' }}
+              >
+                {locationLoading ? 'Locating…' : 'Use my location'}
+              </button>
+              {locationError && (
+                <span className="text-xs text-amber-600 dark:text-amber-300">
+                  {locationError}
+                </span>
+              )}
+              {!locationError && effectiveLocation && (
+                <span className="text-xs text-slate-600 dark:text-slate-400">
+                  Location ready
+                </span>
+              )}
+            </div>
+          </div>
+
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-end">
             {/* Search Input */}
             <div className="flex-1 w-full md:w-auto">
-              <label htmlFor="search-input" className="block text-sm font-medium mb-2 text-gray-300">
+              <label htmlFor="search-input" className="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
                 Search Businesses
               </label>
               <div className="relative">
                 <FontAwesomeIcon 
                   icon={faSearch} 
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500"
                 />
-                <input
+        <input
                   id="search-input"
-                  type="text"
+          type="text"
                   placeholder="Search by name, address, or keywords..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === 'Enter') handleSearch() }}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter') handleSearch() }}
                   className="bf-input pl-10 w-full"
                 />
               </div>
@@ -190,35 +343,35 @@ const Directory = () => {
 
             {/* Filter Dropdown */}
             <div className="w-full md:w-auto">
-              <label htmlFor="filter-by" className="block text-sm font-medium mb-2 text-gray-300">
+              <label htmlFor="filter-by" className="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
                 Filter By Category
               </label>
-              <select
-                onChange={(e) => setFilter(e.target.value)}
-                id="filter-by"
-                value={filter}
+        <select
+          onChange={(e) => setFilter(e.target.value)}
+          id="filter-by"
+          value={filter}
                 className="bf-input min-w-[200px]"
-              >
+        >
                 <option value="">All Categories</option>
-                <option value="restaurant">Restaurants</option>
-                <option value="cafe">Cafes</option>
-                <option value="bar">Bars</option>
-                <option value="park">Parks</option>
-                <option value="museum">Museums</option>
-                <option value="gym">Gyms</option>
-                <option value="hospital">Hospitals</option>
-                <option value="pharmacy">Pharmacies</option>
-                <option value="supermarket">Supermarkets</option>
-                <option value="shopping_mall">Shopping Malls</option>
-                <option value="movie_theater">Theaters</option>
-                <option value="library">Libraries</option>
-                <option value="bank">Banks</option>
-                <option value="post_office">Post Offices</option>
-                <option value="gas_station">Gas Stations</option>
-                <option value="lodging">Hotels</option>
+          <option value="restaurant">Restaurants</option>
+          <option value="cafe">Cafes</option>
+          <option value="bar">Bars</option>
+          <option value="park">Parks</option>
+          <option value="museum">Museums</option>
+          <option value="gym">Gyms</option>
+          <option value="hospital">Hospitals</option>
+          <option value="pharmacy">Pharmacies</option>
+          <option value="supermarket">Supermarkets</option>
+          <option value="shopping_mall">Shopping Malls</option>
+          <option value="movie_theater">Theaters</option>
+          <option value="library">Libraries</option>
+          <option value="bank">Banks</option>
+          <option value="post_office">Post Offices</option>
+          <option value="gas_station">Gas Stations</option>
+          <option value="lodging">Hotels</option>
                 {isAuthenticated && <option value="bookmarks">⭐ My Bookmarked Businesses</option>}
                 <option value="custom">Custom Search...</option>
-              </select>
+        </select>
             </div>
 
             {/* Search Button */}
@@ -232,124 +385,223 @@ const Directory = () => {
           </div>
 
           {/* Custom text query input */}
-          {filter === "custom" && (
-            <div className="mt-4 pt-4 border-t border-gray-700">
-              <label htmlFor="custom-query" className="block text-sm font-medium mb-2 text-gray-300">
+        {filter === "custom" && (
+            <div className="mt-4 pt-4 border-t border-slate-300/40 dark:border-slate-700">
+              <label htmlFor="custom-query" className="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
                 Custom Search Query
               </label>
               <div className="flex gap-2">
-                <input
+            <input
                   id="custom-query"
-                  type="text"
-                  placeholder='e.g. "pizza near Seattle" or "123 Main St"'
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+              type="text"
+              placeholder='e.g. "pizza near Seattle" or "123 Main St"'
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
                   className="bf-input flex-1"
-                />
-                <button
-                  onClick={handleSearch}
-                  disabled={!searchQuery.trim() || isSearching}
+            />
+            <button
+              onClick={handleSearch}
+              disabled={!searchQuery.trim() || isSearching}
                   className="bf-button-primary"
-                >
-                  {isSearching ? "Searching..." : "Search"}
-                </button>
+            >
+              {isSearching ? "Searching..." : "Search"}
+            </button>
               </div>
             </div>
-          )}
+        )}
         </div>
 
         {/* Results Section */}
         <div>
-          {loading ? (
+        {loading ? (
             <div className="bf-card p-12 text-center">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-              <p className="mt-4 text-gray-400">Loading businesses...</p>
+              <p className="mt-4 text-slate-600 dark:text-slate-400">Loading businesses...</p>
             </div>
-          ) : error ? (
+        ) : error ? (
             <div className="bf-card p-6 bg-red-900/20 border-red-500/50">
               <p className="text-red-400">{error}</p>
             </div>
-          ) : listings.length === 0 ? (
+        ) : listings.length === 0 ? (
             <div className="bf-card p-12 text-center">
-              <p className="text-gray-400 text-lg">No businesses found</p>
-              <p className="text-gray-500 text-sm mt-2">Try adjusting your search or filter criteria</p>
+              <p className="text-slate-700 dark:text-slate-300 text-lg">No businesses found</p>
+              <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">Try adjusting your search or filter criteria</p>
             </div>
           ) : (
             <>
-              <div className="mb-4 text-gray-600 dark:text-gray-400">
-                Found <span className="font-semibold text-slate-900 dark:text-white">{listings.length}</span> {listings.length === 1 ? 'business' : 'businesses'}
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {listings.map((business) => {
-                  const isBookmarked = bookmarkedIds.includes(business.place_id)
-                  return (
-                    <div
-                      key={business.id || business.place_id}
-                      onClick={() => navigate(`/business/${business.place_id}`)}
-                      className="bf-card p-6 hover:scale-[1.02] transition-transform cursor-pointer group"
-                    >
-                      {/* Header with bookmark */}
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-400 transition-colors flex-1 pr-2">
-                          {business.name}
-                        </h3>
-                        {isAuthenticated && (
-                          <button
-                            onClick={(e) => addBookmark(business.place_id, e)}
-                            className="text-gray-400 hover:text-yellow-400 transition-colors p-1"
-                            title={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
-                          >
-                            <FontAwesomeIcon 
-                              icon={faBookmark} 
-                              className={isBookmarked ? 'text-yellow-400' : ''}
-                            />
-                          </button>
-                        )}
+              {(() => {
+                const nearFiltered = applyNearFilterAndSort(listings)
+                const { bookmarked, rest } = splitBookmarksFirst(nearFiltered)
+                const showBookmarksSection = isAuthenticated && bookmarked.length > 0 && filter !== 'bookmarks'
+
+                return (
+                  <>
+                    {showBookmarksSection && (
+                      <div className="mb-8">
+                        <div className="flex items-end justify-between mb-3">
+                          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+                            Bookmarked
+                          </h2>
+                          <span className="text-xs text-slate-600 dark:text-slate-400">
+                            {bookmarked.length} saved
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {bookmarked.map((business) => {
+                            const isBookmarked = true
+                            return (
+                              <div
+                                key={`bm_${business.id || business.place_id}`}
+                                onClick={() => navigate(`/business/${business.place_id}`)}
+                                className="bf-card p-6 hover:scale-[1.02] transition-transform cursor-pointer group"
+                              >
+                                <div className="flex items-start justify-between mb-3">
+                                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-400 transition-colors flex-1 pr-2">
+                                    {business.name}
+                                  </h3>
+                                  <button
+                                    onClick={(e) => addBookmark(business.place_id, e)}
+                                    className="text-gray-400 hover:text-yellow-400 transition-colors p-1"
+                                    title="Remove bookmark"
+                                  >
+                                    <FontAwesomeIcon icon={faBookmark} className={isBookmarked ? 'text-yellow-400' : ''} />
+                                  </button>
+                                </div>
+
+                                {typeof business._distanceKm === 'number' && (
+                                  <div className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                                    {business._distanceKm.toFixed(1)} km away
+                                  </div>
+                                )}
+
+                                {business.address && (
+                                  <div className="flex items-start gap-2 mb-3 text-gray-600 dark:text-gray-400 text-sm">
+                                    <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-0.5" />
+                                    <span className="flex-1">{business.address}</span>
+                                  </div>
+                                )}
+
+                                {business.rating && (
+                                  <div className="flex items-center gap-2 mb-4">
+                                    <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
+                                    <span className="text-slate-900 dark:text-white font-semibold">{business.rating}</span>
+                                    {business.user_ratings_total && (
+                                      <span className="text-gray-500 text-sm">
+                                        ({business.user_ratings_total} {business.user_ratings_total === 1 ? 'review' : 'reviews'})
+                                      </span>
+                                    )}
+                                  </div>
+                                )}
+
+                                {business.types && business.types.length > 0 && (
+                                  <div className="flex flex-wrap gap-2 mb-4">
+                                    {business.types.slice(0, 3).map((type, idx) => (
+                                      <span key={idx} className="bf-pill">
+                                        {type.replace(/_/g, ' ')}
+                                      </span>
+                                    ))}
+                                  </div>
+                                )}
+
+                                <div className="text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors">
+                                  View Details →
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </div>
                       </div>
+                    )}
 
-                      {/* Address */}
-                      {business.address && (
-                        <div className="flex items-start gap-2 mb-3 text-gray-600 dark:text-gray-400 text-sm">
-                          <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-0.5" />
-                          <span className="flex-1">{business.address}</span>
-                        </div>
+                    <div className="mb-4 text-gray-600 dark:text-gray-400">
+                      Found <span className="font-semibold text-slate-900 dark:text-white">{nearFiltered.length}</span> {nearFiltered.length === 1 ? 'business' : 'businesses'}
+                      {nearOnly && effectiveLocation && (
+                        <span className="ml-2 text-xs text-slate-600 dark:text-slate-400">
+                          within {radiusKm} km
+                        </span>
                       )}
-
-                      {/* Rating */}
-                      {business.rating && (
-                        <div className="flex items-center gap-2 mb-4">
-                          <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-                          <span className="text-slate-900 dark:text-white font-semibold">{business.rating}</span>
-                          {business.user_ratings_total && (
-                            <span className="text-gray-500 text-sm">
-                              ({business.user_ratings_total} {business.user_ratings_total === 1 ? 'review' : 'reviews'})
-                            </span>
-                          )}
-                        </div>
-                      )}
-
-                      {/* Types/Categories */}
-                      {business.types && business.types.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {business.types.slice(0, 3).map((type, idx) => (
-                            <span key={idx} className="bf-pill">
-                              {type.replace(/_/g, ' ')}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* View Details Link */}
-                      <div className="text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors">
-                        View Details →
-                      </div>
                     </div>
-                  )
-                })}
-              </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {(showBookmarksSection ? rest : nearFiltered).map((business) => {
+                        const isBookmarked = bookmarkedIds.includes(business.place_id)
+                        return (
+                          <div
+                            key={business.id || business.place_id}
+                            onClick={() => navigate(`/business/${business.place_id}`)}
+                            className="bf-card p-6 hover:scale-[1.02] transition-transform cursor-pointer group"
+                          >
+                            {/* Header with bookmark */}
+                            <div className="flex items-start justify-between mb-3">
+                              <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-400 transition-colors flex-1 pr-2">
+                                {business.name}
+                              </h3>
+                              {isAuthenticated && (
+                                <button
+                                  onClick={(e) => addBookmark(business.place_id, e)}
+                                  className="text-gray-400 hover:text-yellow-400 transition-colors p-1"
+                                  title={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
+                                >
+                                  <FontAwesomeIcon
+                                    icon={faBookmark}
+                                    className={isBookmarked ? 'text-yellow-400' : ''}
+                                  />
+                                </button>
+                              )}
+                            </div>
+
+                            {typeof business._distanceKm === 'number' && (
+                              <div className="text-xs text-slate-600 dark:text-slate-400 mb-2">
+                                {business._distanceKm.toFixed(1)} km away
+                              </div>
+                            )}
+
+                            {/* Address */}
+                            {business.address && (
+                              <div className="flex items-start gap-2 mb-3 text-gray-600 dark:text-gray-400 text-sm">
+                                <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-0.5" />
+                                <span className="flex-1">{business.address}</span>
+                              </div>
+                            )}
+
+                            {/* Rating */}
+                            {business.rating && (
+                              <div className="flex items-center gap-2 mb-4">
+                                <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
+                                <span className="text-slate-900 dark:text-white font-semibold">{business.rating}</span>
+                                {business.user_ratings_total && (
+                                  <span className="text-gray-500 text-sm">
+                                    ({business.user_ratings_total} {business.user_ratings_total === 1 ? 'review' : 'reviews'})
+                                  </span>
+                                )}
+                              </div>
+                            )}
+
+                            {/* Types/Categories */}
+                            {business.types && business.types.length > 0 && (
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                {business.types.slice(0, 3).map((type, idx) => (
+                                  <span key={idx} className="bf-pill">
+                                    {type.replace(/_/g, ' ')}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* View Details Link */}
+                            <div className="text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors">
+                              View Details →
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </>
+                )
+              })()}
             </>
-          )}
-        </div>
+        )}
+      </div>
         </div>
       </main>
     </div>

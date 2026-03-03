@@ -13,9 +13,9 @@ const Home = () => {
       <RootLayout />
 
       {!isAuthenticated && (
-        <main className="bf-page-shell bf-hero-gradient flex-1">
-          <section className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-center">
-            <div className="space-y-7 text-left">
+        <main className="flex-1 bf-hero-gradient">
+          <section className="bf-page-shell max-w-6xl mx-auto grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-center pt-10 pb-16 lg:pt-16 lg:pb-24">
+            <div className="space-y-7 text-left max-w-xl">
               <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium text-sky-300 bf-pill">
                 <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
                 Built for discovering local businesses
