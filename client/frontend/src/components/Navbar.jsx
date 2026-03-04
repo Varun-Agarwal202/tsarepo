@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAccessibility } from '../context/AccessibilityContext'
+import { t } from '../utils/translations'
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(false)
   const navigate = useNavigate()
+  const { language } = useAccessibility()
 
   useEffect(() => {
     const localTheme = localStorage.getItem('color-theme')
@@ -37,6 +40,7 @@ const Navbar = () => {
         <button
           onClick={() => navigate('/')}
           className="text-2xl font-semibold dark:text-white"
+          aria-label={t('nav.home', language)}
         >
           Community Resource Hub
         </button>
@@ -45,8 +49,9 @@ const Navbar = () => {
           <button
             onClick={() => navigate('/submit')}
             className="text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg text-sm px-4 py-2"
+            aria-label={t('nav.submit', language)}
           >
-            Submit Resource
+            {t('nav.submit', language)}
           </button>
           <button
             onClick={toggleTheme}
@@ -74,40 +79,45 @@ const Navbar = () => {
               <button
                 onClick={() => navigate('/')}
                 className="py-2 px-3 dark:text-white"
+                aria-label={t('nav.home', language)}
               >
-                Home
+                {t('nav.home', language)}
               </button>
             </li>
             <li>
               <button
                 onClick={() => navigate('/directory')}
                 className="py-2 px-3 dark:text-white"
+                aria-label={t('nav.directory', language)}
               >
-                Directory
+                {t('nav.directory', language)}
               </button>
             </li>
             <li>
               <button
                 onClick={() => navigate('/about')}
                 className="py-2 px-3 dark:text-white"
+                aria-label={t('nav.about', language)}
               >
-                About
+                {t('nav.about', language)}
               </button>
             </li>
             <li>
               <button
                 onClick={() => navigate('/contact')}
                 className="py-2 px-3 dark:text-white"
+                aria-label={t('nav.contact', language)}
               >
-                Contact
+                {t('nav.contact', language)}
               </button>
             </li>
             <li>
               <button
                 onClick={() => navigate('/reference')}
                 className="py-2 px-3 dark:text-white"
+                aria-label={t('nav.reference', language)}
               >
-                Reference
+                {t('nav.reference', language)}
               </button>
             </li>
           </ul>

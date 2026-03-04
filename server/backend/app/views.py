@@ -229,9 +229,55 @@ def nearby_businesses(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def featured_resources(request):
-    """Get the same 5 businesses for community spotlight (ordered by id)"""
-    # Get the first 5 businesses ordered by id for consistency
-    businesses = Business.objects.all().order_by('id')[:5]
+    """Get 5 businesses within the specified radius from the user's location"""
+    import math
+    
+    # Get location and radius from query parameters
+    lat = request.GET.get('latitude')
+    lng = request.GET.get('longitude')
+    radius_km = request.GET.get('radius', 5)
+    
+    try:
+        radius_km = float(radius_km)
+    except (ValueError, TypeError):
+        radius_km = 5
+    
+    # If no location provided, return first 5 businesses (fallback)
+    if not lat or not lng:
+        businesses = Business.objects.all().order_by('id')[:5]
+    else:
+        try:
+            user_lat = float(lat)
+            user_lng = float(lng)
+            
+            # Calculate distance for each business and filter by radius
+            businesses_with_distance = []
+            all_businesses = Business.objects.exclude(latitude__isnull=True).exclude(longitude__isnull=True)
+            
+            for business in all_businesses:
+                if business.latitude is None or business.longitude is None:
+                    continue
+                
+                # Haversine formula to calculate distance in km
+                R = 6371  # Earth's radius in km
+                d_lat = math.radians(business.latitude - user_lat)
+                d_lng = math.radians(business.longitude - user_lng)
+                a = (math.sin(d_lat / 2) ** 2 +
+                     math.cos(math.radians(user_lat)) * math.cos(math.radians(business.latitude)) *
+                     math.sin(d_lng / 2) ** 2)
+                c = 2 * math.asin(math.sqrt(a))
+                distance = R * c
+                
+                if distance <= radius_km:
+                    businesses_with_distance.append((business, distance))
+            
+            # Sort by distance and take first 5
+            businesses_with_distance.sort(key=lambda x: x[1])
+            businesses = [b[0] for b in businesses_with_distance[:5]]
+            
+        except (ValueError, TypeError):
+            # If location parsing fails, return first 5 businesses
+            businesses = Business.objects.all().order_by('id')[:5]
     
     if len(businesses) == 0:
         return JsonResponse([], safe=False)

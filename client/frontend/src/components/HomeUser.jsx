@@ -13,16 +13,14 @@ const HomeUser = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
   const [nearbyBusinesses, setNearbyBusinesses] = useState([]);
-  const [radius, setRadius] = useState(5);
+  const [radius, setRadius] = useState(() => {
+    const stored = localStorage.getItem('searchRadius');
+    return stored ? Number(stored) : 5;
+  });
   const [locationError, setLocationError] = useState(null);
 
-  // computed effective location:
-  // prefer live userLocation, fall back to stored userLocation (if any), otherwise null
-  const effectiveLocation = userLocation ?? (() => {
-    const stored = localStorage.getItem('userLocation');
-    if (!stored) return null;
-    try { return JSON.parse(stored); } catch { return null; }
-  })();
+  // computed effective location: use userLocation state (which is set from geolocation or localStorage fallback)
+  const effectiveLocation = userLocation;
   
   const { isAuthenticated, user } = useContext(AuthContext);
   
@@ -69,6 +67,13 @@ const HomeUser = () => {
     setLocationError(null);
     if (!navigator.geolocation) {
       setLocationError("Geolocation is not supported by your browser.");
+      // Fall back to localStorage if geolocation is not supported
+      const stored = localStorage.getItem("userLocation");
+      if (stored) {
+        try {
+          setUserLocation(JSON.parse(stored));
+        } catch (_) {}
+      }
       setLoading(false);
       return;
     }
@@ -84,22 +89,26 @@ const HomeUser = () => {
       },
       (error) => {
         console.error("Error obtaining location:", error);
-        setLocationError("Location unavailable. Using default. Allow location in your browser to see nearby businesses.");
+        // Fall back to localStorage if geolocation fails
+        const stored = localStorage.getItem("userLocation");
+        if (stored) {
+          try {
+            setUserLocation(JSON.parse(stored));
+            setLocationError("Using previously saved location. Allow location access for more accurate results.");
+          } catch (_) {
+            setLocationError("Location unavailable. Allow location in your browser to see nearby businesses.");
+          }
+        } else {
+          setLocationError("Location unavailable. Allow location in your browser to see nearby businesses.");
+        }
         setLoading(false);
       },
       { enableHighAccuracy: false, maximumAge: Infinity, timeout: 20000 }
     );
   };
 
+  // Request location on mount - try geolocation first, fall back to localStorage if it fails
   useEffect(() => {
-    const stored = localStorage.getItem("userLocation");
-    if (stored) {
-      try {
-        setUserLocation(JSON.parse(stored));
-      } catch (_) {}
-      setLoading(false);
-      return;
-    }
     requestLocation();
   }, []);
 
@@ -221,7 +230,14 @@ const HomeUser = () => {
           <input
             type="text"
             id="radius"
-            onChange={(e) => setRadius(Number(e.target.value))}
+            value={radius}
+            onChange={(e) => {
+              const newRadius = Number(e.target.value);
+              setRadius(newRadius);
+              localStorage.setItem('searchRadius', newRadius.toString());
+              // Dispatch custom event to notify CommunitySpotlight
+              window.dispatchEvent(new Event('radiusChanged'));
+            }}
             className="w-20 rounded-md border border-slate-600 bg-slate-900/60 px-2 py-1.5 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
           />
         </div>

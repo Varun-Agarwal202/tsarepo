@@ -9,7 +9,28 @@ const CommunitySpotlight = () => {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/resources/featured/')
+        // Get location and radius from localStorage
+        const storedLocation = localStorage.getItem('userLocation')
+        const storedRadius = localStorage.getItem('searchRadius') || '5'
+        
+        let url = 'http://localhost:8000/api/resources/featured/'
+        
+        if (storedLocation) {
+          try {
+            const location = JSON.parse(storedLocation)
+            const params = new URLSearchParams({
+              latitude: location.latitude.toString(),
+              longitude: location.longitude.toString(),
+              radius: storedRadius
+            })
+            url += `?${params.toString()}`
+          } catch (e) {
+            // If parsing fails, use default URL without params
+            console.error('Error parsing stored location:', e)
+          }
+        }
+        
+        const res = await fetch(url)
         if (res.ok) {
           const data = await res.json()
           setFeatured(data)
@@ -20,7 +41,36 @@ const CommunitySpotlight = () => {
         setLoading(false)
       }
     }
+    
     fetchFeatured()
+    
+    // Refetch when location or radius changes in localStorage
+    const handleStorageChange = (e) => {
+      if (e.key === 'userLocation' || e.key === 'searchRadius') {
+        fetchFeatured()
+      }
+    }
+    
+    window.addEventListener('storage', handleStorageChange)
+    
+    // Also listen for custom event when radius changes (since storage event only fires in other tabs)
+    // Use a custom event that HomeUser can dispatch
+    const handleCustomStorageChange = () => {
+      fetchFeatured()
+    }
+    
+    window.addEventListener('radiusChanged', handleCustomStorageChange)
+    
+    // Poll for changes every 3 seconds (less frequent to reduce load)
+    const interval = setInterval(() => {
+      fetchFeatured()
+    }, 3000)
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      window.removeEventListener('radiusChanged', handleCustomStorageChange)
+      clearInterval(interval)
+    }
   }, [])
 
   if (loading) {
