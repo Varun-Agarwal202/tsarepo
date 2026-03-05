@@ -83,7 +83,7 @@ const Directory = () => {
       const loadBookmarks = async () => {
         const token = localStorage.getItem('authToken')
         try {
-          const res = await fetch('http://localhost:8000/api/user_bookmarks/', {
+          const res = await fetch('http://tsarepo-production.up.railway.app/api/user_bookmarks/', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ const Directory = () => {
       // bookmarked businesses (per-user)
       if (type === 'bookmarks') {
         const token = localStorage.getItem('authToken')
-        const res = await fetch('http://localhost:8000/api/user_bookmarks/', {
+        const res = await fetch('http://tsarepo-production.up.railway.app/api/user_bookmarks/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ const Directory = () => {
         const businesses = await Promise.all(
           placeIds.map(async (pid) => {
             try {
-              const r = await fetch('http://localhost:8000/api/getBusiness/', {
+              const r = await fetch('http://tsarepo-production.up.railway.app/api/getBusiness/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ place_id: pid }),
@@ -157,7 +157,7 @@ const Directory = () => {
       const params = new URLSearchParams()
       if (q) params.append('q', q)
       if (type) params.append('type', type)
-      const url = `http://localhost:8000/api/businesses/${params.toString() ? `?${params.toString()}` : ''}`
+      const url = `http://tsarepo-production.up.railway.app/api/businesses/${params.toString() ? `?${params.toString()}` : ''}`
 
       const response = await fetch(url)
       if (!response.ok) throw new Error(`HTTP ${response.status}`)
@@ -245,7 +245,7 @@ const Directory = () => {
     if (token) headers.Authorization = `Token ${token}`
 
     try {
-      const res = await fetch('http://localhost:8000/api/add_bookmark/', {
+      const res = await fetch('http://tsarepo-production.up.railway.app/api/add_bookmark/', {
         method: 'POST',
         headers,
         body: JSON.stringify({ business: placeId }),
@@ -259,7 +259,7 @@ const Directory = () => {
   }
 
   useEffect(() => {
-    let url = 'http://localhost:8000/api/resources/?'
+    let url = 'http://tsarepo-production.up.railway.app/api/resources/?'
     if (category) url += `category=${category}&`
     fetch(url).then(r => r.json()).then(data => setResources(data.results || data))
   }, [category])
@@ -270,7 +270,7 @@ const Directory = () => {
     
     const fetchNearbyBusinesses = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/nearby_businesses/', {
+        const res = await fetch('http://tsarepo-production.up.railway.app/api/nearby_businesses/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

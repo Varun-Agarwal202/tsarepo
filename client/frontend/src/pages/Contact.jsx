@@ -31,7 +31,7 @@ const Contact = () => {
     setSubmitting(true)
 
     try {
-      const res = await fetch('http://localhost:8000/api/submissions/', {
+      const res = await fetch('http://tsarepo-production.up.railway.app/api/submissions/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
