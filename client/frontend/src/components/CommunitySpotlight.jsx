@@ -9,9 +9,11 @@ const CommunitySpotlight = () => {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        // Get location and radius from localStorage
-        const storedLocation = localStorage.getItem('userLocation')
-        const storedRadius = localStorage.getItem('searchRadius') || '5'
+        // Get location and radius from localStorage - prioritize manualLocation over userLocation
+        const manualLoc = localStorage.getItem('manualLocation')
+        const userLoc = localStorage.getItem('userLocation')
+        const storedLocation = manualLoc || userLoc // Use manual location if available, otherwise user location
+        const storedRadius = localStorage.getItem('userRadius') || '10'
         
         let url = 'http://localhost:8000/api/resources/featured/'
         
@@ -46,7 +48,7 @@ const CommunitySpotlight = () => {
     
     // Refetch when location or radius changes in localStorage
     const handleStorageChange = (e) => {
-      if (e.key === 'userLocation' || e.key === 'searchRadius') {
+      if (e.key === 'userLocation' || e.key === 'manualLocation' || e.key === 'userRadius') {
         fetchFeatured()
       }
     }
@@ -61,6 +63,9 @@ const CommunitySpotlight = () => {
     
     window.addEventListener('radiusChanged', handleCustomStorageChange)
     
+    // Also listen for manual location changes via custom event
+    window.addEventListener('manualLocationChanged', handleCustomStorageChange)
+    
     // Poll for changes every 3 seconds (less frequent to reduce load)
     const interval = setInterval(() => {
       fetchFeatured()
@@ -69,6 +74,7 @@ const CommunitySpotlight = () => {
     return () => {
       window.removeEventListener('storage', handleStorageChange)
       window.removeEventListener('radiusChanged', handleCustomStorageChange)
+      window.removeEventListener('manualLocationChanged', handleCustomStorageChange)
       clearInterval(interval)
     }
   }, [])

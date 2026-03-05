@@ -3,24 +3,34 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { TfiNewWindow } from "react-icons/tfi";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark, faMapMarkerAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../context/AuthContext';
 
 const DEFAULT_LOCATION = { latitude: 51.5074, longitude: -0.1278 };
 
 const HomeUser = () => {
   const [userLocation, setUserLocation] = useState(null);
+  const [manualLocation, setManualLocation] = useState(() => {
+    const stored = localStorage.getItem('manualLocation');
+    return stored ? JSON.parse(stored) : null;
+  });
+  const [manualLocationAddress, setManualLocationAddress] = useState(() => {
+    return localStorage.getItem('manualLocationAddress') || '';
+  });
+  const [showManualLocationInput, setShowManualLocationInput] = useState(false);
+  const [manualLocationInput, setManualLocationInput] = useState('');
+  const [isGeocoding, setIsGeocoding] = useState(false);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
   const [nearbyBusinesses, setNearbyBusinesses] = useState([]);
   const [radius, setRadius] = useState(() => {
-    const stored = localStorage.getItem('searchRadius');
-    return stored ? Number(stored) : 5;
+    const stored = localStorage.getItem('userRadius');
+    return stored ? Number(stored) : 10;
   });
   const [locationError, setLocationError] = useState(null);
 
-  // computed effective location: use userLocation state (which is set from geolocation or localStorage fallback)
-  const effectiveLocation = userLocation;
+  // computed effective location: prioritize manual location > userLocation (geolocation/localStorage)
+  const effectiveLocation = manualLocation || userLocation;
   
   const { isAuthenticated, user } = useContext(AuthContext);
   
@@ -62,6 +72,58 @@ const HomeUser = () => {
   }, [bookmarkedIds, user]);
 
   const navigate = useNavigate();
+
+  // Geocode an address to get coordinates
+  const geocodeAddress = async (address) => {
+    if (!address.trim()) return null;
+    
+    setIsGeocoding(true);
+    try {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyCoxkur1IMrFgWYnTrdWANhisU2VBM9HaQ`
+      );
+      const data = await response.json();
+      
+      if (data.status === 'OK' && data.results.length > 0) {
+        const location = data.results[0].geometry.location;
+        const coords = { latitude: location.lat, longitude: location.lng };
+        setManualLocation(coords);
+        setManualLocationAddress(data.results[0].formatted_address);
+        localStorage.setItem('manualLocation', JSON.stringify(coords));
+        localStorage.setItem('manualLocationAddress', data.results[0].formatted_address);
+        // Dispatch event to notify CommunitySpotlight
+        window.dispatchEvent(new CustomEvent('manualLocationChanged', { detail: { location: coords } }));
+        setLocationError(null);
+        setShowManualLocationInput(false);
+        setManualLocationInput('');
+        return coords;
+      } else {
+        setLocationError(`Could not find location: ${data.status}`);
+        return null;
+      }
+    } catch (error) {
+      console.error('Geocoding error:', error);
+      setLocationError('Error looking up address. Please try again.');
+      return null;
+    } finally {
+      setIsGeocoding(false);
+    }
+  };
+
+  const handleSetManualLocation = () => {
+    geocodeAddress(manualLocationInput);
+  };
+
+  const clearManualLocation = () => {
+    setManualLocation(null);
+    setManualLocationAddress('');
+    localStorage.removeItem('manualLocation');
+    localStorage.removeItem('manualLocationAddress');
+    // If we had a userLocation, it will now be used
+    if (!userLocation) {
+      requestLocation();
+    }
+  };
 
   const requestLocation = () => {
     setLocationError(null);
@@ -112,20 +174,19 @@ const HomeUser = () => {
     requestLocation();
   }, []);
 
-  // call getNearby only after we know whether we have a saved userLocation
-  // if userLocation exists, use it; otherwise, only use DEFAULT_LOCATION after
-  // a location attempt has completed (loading === false)
+  // call getNearby only after we know whether we have a location
+  // Priority: manualLocation > userLocation > DEFAULT_LOCATION
   useEffect(() => {
-    const locToUse = userLocation ?? null;
+    const locToUse = effectiveLocation;
     if (locToUse) {
       getNearby(locToUse);
       return;
     }
     // if we've finished trying to get location and none available, use default
-    if (!loading && !userLocation) {
+    if (!loading && !effectiveLocation) {
       getNearby(DEFAULT_LOCATION);
     }
-  }, [userLocation, loading, filter, radius]);
+  }, [effectiveLocation, loading, filter, radius]);
 
   // updated: accept optional text query (uses Places Text Search when provided)
   const getNearby = async (location = effectiveLocation, { query } = {}) => {
@@ -173,6 +234,27 @@ const HomeUser = () => {
     <div className="space-y-6">
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-3 md:gap-4">
+        {/* Manual Location Button */}
+        <button
+          onClick={() => setShowManualLocationInput(true)}
+          className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-slate-800/60 border border-slate-600 text-sm text-slate-200 hover:bg-slate-700/60 hover:border-sky-500/50 transition-colors"
+          title="Set a custom location"
+        >
+          <FontAwesomeIcon icon={faMapMarkerAlt} />
+          {manualLocationAddress ? `Location: ${manualLocationAddress.substring(0, 20)}...` : 'Set Location'}
+        </button>
+
+        {manualLocation && (
+          <button
+            onClick={clearManualLocation}
+            className="inline-flex items-center gap-1 px-2 py-1.5 rounded-md bg-slate-700/60 text-xs text-slate-300 hover:bg-slate-600/60 transition-colors"
+            title="Clear manual location and use your current location"
+          >
+            <FontAwesomeIcon icon={faTimes} />
+            Clear
+          </button>
+        )}
+
         <div className="flex items-center gap-2">
           <label htmlFor="business-type" className="text-xs font-medium text-slate-300 uppercase tracking-wide">
             Type
@@ -234,9 +316,9 @@ const HomeUser = () => {
             onChange={(e) => {
               const newRadius = Number(e.target.value);
               setRadius(newRadius);
-              localStorage.setItem('searchRadius', newRadius.toString());
+              localStorage.setItem('userRadius', newRadius.toString());
               // Dispatch custom event to notify CommunitySpotlight
-              window.dispatchEvent(new Event('radiusChanged'));
+              window.dispatchEvent(new CustomEvent('radiusChanged', { detail: { radius: newRadius } }));
             }}
             className="w-20 rounded-md border border-slate-600 bg-slate-900/60 px-2 py-1.5 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
           />
@@ -252,9 +334,11 @@ const HomeUser = () => {
                 <div className="text-xs text-slate-400">
                   {locationError
                     ? <span className="text-amber-300">{locationError}</span>
+                    : manualLocation
+                    ? `Showing places around ${manualLocationAddress || 'your selected location'}.`
                     : 'Showing places around your location.'}
                 </div>
-                {!userLocation && !loading && (
+                {!effectiveLocation && !loading && (
                   <button
                     type="button"
                     onClick={requestLocation}
@@ -354,6 +438,79 @@ const HomeUser = () => {
           </ul>
         </div>
       </div>
+
+      {/* Manual Location Input Modal */}
+      {showManualLocationInput && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bf-card p-6 max-w-md w-full mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-slate-100">Set Custom Location</h3>
+              <button
+                onClick={() => {
+                  setShowManualLocationInput(false);
+                  setManualLocationInput('');
+                  setLocationError(null);
+                }}
+                className="text-slate-400 hover:text-slate-200 transition-colors"
+                aria-label="Close"
+              >
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="location-input" className="block text-sm font-medium text-slate-300 mb-2">
+                  Enter an address or location
+                </label>
+                <input
+                  id="location-input"
+                  type="text"
+                  value={manualLocationInput}
+                  onChange={(e) => setManualLocationInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !isGeocoding) {
+                      handleSetManualLocation();
+                    }
+                  }}
+                  placeholder="e.g., 123 Main St, New York, NY or Seattle, WA"
+                  className="w-full px-3 py-2 rounded-md border border-slate-600 bg-slate-900/60 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                  disabled={isGeocoding}
+                />
+                <p className="mt-1 text-xs text-slate-400">
+                  Enter a full address, city name, or landmark
+                </p>
+              </div>
+
+              {locationError && (
+                <div className="text-sm text-amber-300 bg-amber-900/20 border border-amber-800 rounded-md p-2">
+                  {locationError}
+                </div>
+              )}
+
+              <div className="flex gap-2">
+                <button
+                  onClick={handleSetManualLocation}
+                  disabled={!manualLocationInput.trim() || isGeocoding}
+                  className="flex-1 px-4 py-2 rounded-md bg-sky-500 text-sm font-medium text-slate-950 hover:bg-sky-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isGeocoding ? 'Looking up...' : 'Set Location'}
+                </button>
+                <button
+                  onClick={() => {
+                    setShowManualLocationInput(false);
+                    setManualLocationInput('');
+                    setLocationError(null);
+                  }}
+                  className="px-4 py-2 rounded-md border border-slate-600 bg-slate-800/60 text-sm font-medium text-slate-300 hover:bg-slate-700/60 transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

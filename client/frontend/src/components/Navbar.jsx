@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAccessibility } from '../context/AccessibilityContext'
 import { t } from '../utils/translations'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const navigate = useNavigate()
   const { language } = useAccessibility()
 
@@ -34,21 +37,37 @@ const Navbar = () => {
     }
   }
 
+  const handleNavClick = (path) => {
+    navigate(path)
+    setIsMobileMenuOpen(false)
+  }
+
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 relative">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <button
-          onClick={() => navigate('/')}
-          className="text-2xl font-semibold dark:text-white"
-          aria-label={t('nav.home', language)}
-        >
-          Community Resource Hub
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => handleNavClick('/')}
+            className="text-2xl font-semibold dark:text-white"
+            aria-label={t('nav.home', language)}
+          >
+            Community Resource Hub
+          </button>
+        </div>
 
         <div className="flex md:order-2 space-x-3">
+          {/* Submit Resource button - hidden on mobile, shown on desktop */}
           <button
-            onClick={() => navigate('/submit')}
-            className="text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg text-sm px-4 py-2"
+            onClick={() => handleNavClick('/submit')}
+            className="hidden md:inline-flex text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg text-sm px-4 py-2"
             aria-label={t('nav.submit', language)}
           >
             {t('nav.submit', language)}
@@ -56,6 +75,7 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5"
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {isDark ? (
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -73,12 +93,13 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Desktop Menu */}
         <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
           <ul className="flex flex-col md:flex-row md:space-x-8 font-medium">
             <li>
               <button
-                onClick={() => navigate('/')}
-                className="py-2 px-3 dark:text-white"
+                onClick={() => handleNavClick('/')}
+                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
                 aria-label={t('nav.home', language)}
               >
                 {t('nav.home', language)}
@@ -86,8 +107,8 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                onClick={() => navigate('/directory')}
-                className="py-2 px-3 dark:text-white"
+                onClick={() => handleNavClick('/directory')}
+                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
                 aria-label={t('nav.directory', language)}
               >
                 {t('nav.directory', language)}
@@ -95,8 +116,8 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                onClick={() => navigate('/about')}
-                className="py-2 px-3 dark:text-white"
+                onClick={() => handleNavClick('/about')}
+                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
                 aria-label={t('nav.about', language)}
               >
                 {t('nav.about', language)}
@@ -104,8 +125,8 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                onClick={() => navigate('/contact')}
-                className="py-2 px-3 dark:text-white"
+                onClick={() => handleNavClick('/contact')}
+                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
                 aria-label={t('nav.contact', language)}
               >
                 {t('nav.contact', language)}
@@ -113,11 +134,77 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                onClick={() => navigate('/reference')}
-                className="py-2 px-3 dark:text-white"
+                onClick={() => handleNavClick('/reference')}
+                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
                 aria-label={t('nav.reference', language)}
               >
                 {t('nav.reference', language)}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="px-4 pb-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+          <ul className="flex flex-col space-y-2 font-medium">
+            <li>
+              <button
+                onClick={() => handleNavClick('/')}
+                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                aria-label={t('nav.home', language)}
+              >
+                {t('nav.home', language)}
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('/directory')}
+                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                aria-label={t('nav.directory', language)}
+              >
+                {t('nav.directory', language)}
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('/about')}
+                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                aria-label={t('nav.about', language)}
+              >
+                {t('nav.about', language)}
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('/contact')}
+                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                aria-label={t('nav.contact', language)}
+              >
+                {t('nav.contact', language)}
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('/reference')}
+                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                aria-label={t('nav.reference', language)}
+              >
+                {t('nav.reference', language)}
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('/submit')}
+                className="w-full text-center py-3 px-3 text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg transition-colors mt-2"
+                aria-label={t('nav.submit', language)}
+              >
+                {t('nav.submit', language)}
               </button>
             </li>
           </ul>

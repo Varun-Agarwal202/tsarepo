@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const NavbarBusiness = () => {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   const [isDark, setIsDark] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLogout = () => { logout(); navigate('/'); };
 
@@ -37,13 +40,39 @@ const NavbarBusiness = () => {
     }
   };
 
+  const handleNavClick = (path) => {
+    navigate(path);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <nav className="bg-white border-b border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-b border-gray-200 dark:bg-gray-900 relative">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-        <button onClick={() => navigate('/')} className="text-2xl font-semibold dark:text-white">BusinessFinder</button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} className="w-5 h-5" />
+          </button>
+          <button onClick={() => handleNavClick('/')} className="text-2xl font-semibold dark:text-white">
+            BusinessFinder
+          </button>
+        </div>
+        
         <div className="flex gap-3 items-center">
-          <Link to="/business/dashboard" className="py-2 px-3 text-gray-700 dark:text-gray-300">Dashboard</Link>
-          <Link to="/directory" className="py-2 px-3 text-gray-700 dark:text-gray-300">Directory</Link>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-3 items-center">
+            <Link to="/business/dashboard" className="py-2 px-3 text-gray-700 dark:text-gray-300 hover:text-sky-400 transition-colors">
+              Dashboard
+            </Link>
+            <Link to="/directory" className="py-2 px-3 text-gray-700 dark:text-gray-300 hover:text-sky-400 transition-colors">
+              Directory
+            </Link>
+          </div>
+          
           <button 
             type="button" 
             onClick={toggleTheme} 
@@ -60,7 +89,40 @@ const NavbarBusiness = () => {
               </svg>
             )}
           </button>
-          <button onClick={handleLogout} className="text-white bg-blue-700 px-3 py-1 rounded dark:bg-blue-600 dark:hover:bg-blue-700">Log Out</button>
+          <button 
+            onClick={handleLogout} 
+            className="text-white bg-blue-700 px-3 py-1 rounded dark:bg-blue-600 dark:hover:bg-blue-700 hover:bg-blue-800 dark:hover:bg-blue-800 transition-colors"
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="px-4 pb-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+          <ul className="flex flex-col space-y-2 font-medium">
+            <li>
+              <button
+                onClick={() => handleNavClick('/business/dashboard')}
+                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              >
+                Dashboard
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('/directory')}
+                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              >
+                Directory
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

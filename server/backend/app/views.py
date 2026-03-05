@@ -42,7 +42,7 @@ def fetch_businesses(request):
     try:
         if query:
             # text search
-            params = {'query': f'local businesses {query}', 'key': api_key}
+            params = {'query': f'nonprofits {query}', 'key': api_key}
             if lat and lng:
                 params.update({'location': f'{lat},{lng}'})
             if keyword:
@@ -57,7 +57,7 @@ def fetch_businesses(request):
                 params['type'] = keyword
             else:
                 # add a generic keyword to bias results toward businesses
-                params.setdefault('keyword', 'local business')
+                params.setdefault('keyword', 'nonprofits')
             response = requests.get(url_nearby, params=params, timeout=REQUEST_TIMEOUT)
     except requests.RequestException as e:
         return JsonResponse({'error': 'External API request failed', 'details': str(e)}, status=502)
