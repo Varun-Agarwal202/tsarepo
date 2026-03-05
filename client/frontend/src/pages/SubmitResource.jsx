@@ -22,7 +22,7 @@ export default function SubmitResource() {
     setSubmitting(true);
 
     try {
-      const res = await fetch('http://tsarepo-production.up.railway.app/api/submissions/', {
+      const res = await fetch('https://tsarepo-production.up.railway.app/api/submissions/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

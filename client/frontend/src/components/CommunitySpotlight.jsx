@@ -15,7 +15,7 @@ const CommunitySpotlight = () => {
         const storedLocation = manualLoc || userLoc // Use manual location if available, otherwise user location
         const storedRadius = localStorage.getItem('userRadius') || '10'
         
-        let url = 'http://tsarepo-production.up.railway.app/api/resources/featured/'
+        let url = 'https://tsarepo-production.up.railway.app/api/resources/featured/'
         
         if (storedLocation) {
           try {

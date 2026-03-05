@@ -46,7 +46,7 @@ export default function Signup ()  {
 
         try {
             const csrf = getCookie('csrftoken');
-            const reg = await fetch("http://tsarepo-production.up.railway.app/auth/registration/", {
+            const reg = await fetch("https://tsarepo-production.up.railway.app/auth/registration/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export default function Signup ()  {
 
             // try to login the new user so /auth/user/ reflects the new account
             // (skip this if you require email confirmation before login)
-            const login = await fetch("http://tsarepo-production.up.railway.app/auth/login/", {
+            const login = await fetch("https://tsarepo-production.up.railway.app/auth/login/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -73,7 +73,7 @@ export default function Signup ()  {
                 const loginRes = await login.json();
                 // Store token so AuthContext can find it
                 if (loginRes.key) localStorage.setItem('authToken', loginRes.key);
-                const userRes = await fetch("http://tsarepo-production.up.railway.app/auth/user/", { credentials: "include" });
+                const userRes = await fetch("https://tsarepo-production.up.railway.app/auth/user/", { credentials: "include" });
                 if (userRes.ok) {
                     const userJson = await userRes.json();
                     console.log('[Signup] /auth/user/ payload:', userJson);
@@ -81,7 +81,7 @@ export default function Signup ()  {
 
                     // fetch profile/role from dedicated endpoint
                     try {
-                      const profileRes = await fetch("http://tsarepo-production.up.railway.app/api/my_profile/", {
+                      const profileRes = await fetch("https://tsarepo-production.up.railway.app/api/my_profile/", {
                         method: "GET",
                         headers: { "Content-Type": "application/json", Authorization: `Token ${loginRes.key}` },
                       });

@@ -31,14 +31,14 @@ const Login = () => {
   
   try {
     const res = await axios.post(
-      'http://tsarepo-production.up.railway.app/auth/login/',
+      'https://tsarepo-production.up.railway.app/auth/login/',
       formData,
       { headers: { 'Content-Type': 'application/json' } }
     );
     // Save the token first
     localStorage.setItem("authToken", res.data.key);
 
-    const userRes = await axios.get('http://tsarepo-production.up.railway.app/auth/user/', {
+    const userRes = await axios.get('https://tsarepo-production.up.railway.app/auth/user/', {
       headers: { Authorization: `Token ${res.data.key}` }
     });
     console.log('[Login] /auth/user/ payload:', userRes.data);
@@ -47,7 +47,7 @@ const Login = () => {
     // Fetch profile/role from dedicated endpoint
     let resolvedRole = null;
     try {
-      const profileRes = await axios.get('http://tsarepo-production.up.railway.app/api/my_profile/', {
+      const profileRes = await axios.get('https://tsarepo-production.up.railway.app/api/my_profile/', {
         headers: { Authorization: `Token ${res.data.key}` }
       });
       console.log('[Login] /api/my_profile/ payload:', profileRes.data);

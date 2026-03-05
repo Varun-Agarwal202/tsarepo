@@ -44,7 +44,7 @@ const HomeUser = () => {
     const loadBookmarks = async () => {
       const token = localStorage.getItem('authToken');
       try {
-        const res = await fetch('http://tsarepo-production.up.railway.app/api/user_bookmarks/', {
+        const res = await fetch('https://tsarepo-production.up.railway.app/api/user_bookmarks/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const HomeUser = () => {
     
     setIsGeocoding(true);
     try {
-      const response = await fetch('http://tsarepo-production.up.railway.app/api/geocode/', {
+      const response = await fetch('https://tsarepo-production.up.railway.app/api/geocode/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ address: address.trim() }),
@@ -204,7 +204,7 @@ const HomeUser = () => {
       if (query) body.query = query;
       else if (filter) body.type = filter;
 
-      const response = await fetch('http://tsarepo-production.up.railway.app/api/nearby_businesses/', {
+      const response = await fetch('https://tsarepo-production.up.railway.app/api/nearby_businesses/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
