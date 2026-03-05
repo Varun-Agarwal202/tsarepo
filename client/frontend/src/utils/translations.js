@@ -3,7 +3,7 @@ export const translations = {
     // Navigation
     'nav.home': 'Home',
     'nav.directory': 'Directory',
-    'nav.about': 'About',
+    'nav.about': 'FAQ',
     'nav.contact': 'Contact',
     'nav.submit': 'Submit Resource',
     'nav.reference': 'Reference',
@@ -79,7 +79,7 @@ export const translations = {
     // Navigation
     'nav.home': 'Inicio',
     'nav.directory': 'Directorio',
-    'nav.about': 'Acerca de',
+    'nav.about': 'Preguntas frecuentes',
     'nav.contact': 'Contacto',
     'nav.submit': 'Enviar Recurso',
     'nav.reference': 'Referencia',
@@ -155,7 +155,7 @@ export const translations = {
     // Navigation
     'nav.home': 'Accueil',
     'nav.directory': 'Répertoire',
-    'nav.about': 'À propos',
+    'nav.about': 'FAQ',
     'nav.contact': 'Contact',
     'nav.submit': 'Soumettre une Ressource',
     'nav.reference': 'Référence',

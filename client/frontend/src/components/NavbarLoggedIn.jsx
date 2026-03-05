@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className={`flex-1 min-w-0 flex justify-center ${menuOpen ? 'flex' : 'hidden'} md:!flex`} id="navbar-cta">
             <ul className="flex flex-col md:flex-row font-medium gap-1 md:gap-0 md:space-x-6 lg:space-x-8 p-4 md:p-0 mt-0 md:mt-0 border border-gray-200 md:border-0 rounded-lg bg-gray-100 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-600">
               <li><Link to="/" className={`${navLinkClass} ${location.pathname === '/' ? activeClass : ''}`} aria-current={location.pathname === '/' ? 'page' : undefined}>Home</Link></li>
-              <li><Link to="/about" className={`${navLinkClass} ${location.pathname === '/about' ? activeClass : ''}`}>About</Link></li>
+              <li><Link to="/about" className={`${navLinkClass} ${location.pathname === '/about' ? activeClass : ''}`}>FAQ</Link></li>
               <li><Link to="/services" className={`${navLinkClass} ${location.pathname === '/services' ? activeClass : ''}`}>Services</Link></li>
               <li><Link to="/contact" className={`${navLinkClass} ${location.pathname === '/contact' ? activeClass : ''}`}>Contact</Link></li>
               <li><Link to="/directory" className={`${navLinkClass} ${location.pathname === '/directory' ? activeClass : ''}`}>Directory</Link></li>
