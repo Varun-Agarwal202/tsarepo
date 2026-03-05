@@ -101,6 +101,7 @@ MIDDLEWARE = [
 
 HEADLESS_ONLY = True
 CORS_ALLOWED_ORIGINS = [
+    "https://tsarepo.vercel.app/",
     "http://localhost:5173",
 ]
 
