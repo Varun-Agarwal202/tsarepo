@@ -73,24 +73,26 @@ const HomeUser = () => {
 
   const navigate = useNavigate();
 
-  // Geocode an address to get coordinates
+  // Geocode an address to get coordinates (using backend endpoint)
   const geocodeAddress = async (address) => {
     if (!address.trim()) return null;
     
     setIsGeocoding(true);
     try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyCoxkur1IMrFgWYnTrdWANhisU2VBM9HaQ`
-      );
+      const response = await fetch('http://localhost:8000/api/geocode/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ address: address.trim() }),
+      });
+      
       const data = await response.json();
       
-      if (data.status === 'OK' && data.results.length > 0) {
-        const location = data.results[0].geometry.location;
-        const coords = { latitude: location.lat, longitude: location.lng };
+      if (data.success && data.latitude && data.longitude) {
+        const coords = { latitude: data.latitude, longitude: data.longitude };
         setManualLocation(coords);
-        setManualLocationAddress(data.results[0].formatted_address);
+        setManualLocationAddress(data.formatted_address || address);
         localStorage.setItem('manualLocation', JSON.stringify(coords));
-        localStorage.setItem('manualLocationAddress', data.results[0].formatted_address);
+        localStorage.setItem('manualLocationAddress', data.formatted_address || address);
         // Dispatch event to notify CommunitySpotlight
         window.dispatchEvent(new CustomEvent('manualLocationChanged', { detail: { location: coords } }));
         setLocationError(null);
@@ -98,12 +100,13 @@ const HomeUser = () => {
         setManualLocationInput('');
         return coords;
       } else {
-        setLocationError(`Could not find location: ${data.status}`);
+        const errorMsg = data.error || `Could not find location: ${data.status || 'Unknown error'}`;
+        setLocationError(errorMsg);
         return null;
       }
     } catch (error) {
       console.error('Geocoding error:', error);
-      setLocationError('Error looking up address. Please try again.');
+      setLocationError('Error looking up address. Please check your connection and try again.');
       return null;
     } finally {
       setIsGeocoding(false);

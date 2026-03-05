@@ -9,6 +9,7 @@ from .views import (
     my_profile,
     featured_resources,
     submit_resource,
+    geocode_address,
 )
 
 urlpatterns = [
@@ -20,4 +21,5 @@ urlpatterns = [
     path('my_profile/', my_profile, name='my_profile'),
     path('resources/featured/', featured_resources, name='featured_resources'),
     path('submissions/', submit_resource, name='submit_resource'),
+    path('geocode/', geocode_address, name='geocode_address'),
 ]
