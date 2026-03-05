@@ -52,7 +52,7 @@ const DetailsPage = ({ data }) => {
                 <p className="font-semibold">{review.author_name}</p>
                 <p className="ml-4 text-yellow-500">{'⭐'.repeat(review.rating)}</p>
               </div>
-              <p className="text-gray-700">{review.text}</p>
+              <p className="text-white-700">{review.text}</p>
             </div>
           ))}
         </div>
