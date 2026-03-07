@@ -100,14 +100,18 @@ MIDDLEWARE = [
 ]
 
 HEADLESS_ONLY = True
+
+
+CORS_ALLOW_CREDENTIALS = True   # <--- ensure credentials header is 'true'
 CORS_ALLOWED_ORIGINS = [
     "https://tsarepo.vercel.app",
+    "https://tsarepo-production.up.railway.app",  # add this
     "http://localhost:5173",
 ]
 
-CORS_ALLOW_CREDENTIALS = True   # <--- ensure credentials header is 'true'
-
 CSRF_TRUSTED_ORIGINS = [
+    "https://tsarepo.vercel.app",
+    "https://tsarepo-production.up.railway.app",  # add this
     "http://localhost:5173",
 ]
 
