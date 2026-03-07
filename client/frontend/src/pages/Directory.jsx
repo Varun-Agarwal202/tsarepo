@@ -15,7 +15,6 @@ const Directory = () => {
   const [isSearching, setIsSearching] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [error, setError] = useState(null)
-  const [filter, setFilter] = useState('')
   const [bookmarkedIds, setBookmarkedIds] = useState([])
   const [userLocation, setUserLocation] = useState(null)
   const [locationLoading, setLocationLoading] = useState(true)
@@ -24,6 +23,7 @@ const Directory = () => {
   const [nearOnly, setNearOnly] = useState(true)
   const [resources, setResources] = useState([])
   const [category, setCategory] = useState('')
+  const [sortByCategory, setSortByCategory] = useState('')
   const [center, setCenter] = useState({ lat: 40.7128, lng: -74.0060 }) // default to NYC
   const [selectedResource, setSelectedResource] = useState(null)
   const [selectedMapPin, setSelectedMapPin] = useState(null)
@@ -83,7 +83,7 @@ const Directory = () => {
       const loadBookmarks = async () => {
         const token = localStorage.getItem('authToken')
         try {
-          const res = await fetch('http://localhost:8000/api/user_bookmarks/', {
+          const res = await fetch('https://tsarepo-production.up.railway.app/api/user_bookmarks/', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ const Directory = () => {
       // bookmarked businesses (per-user)
       if (type === 'bookmarks') {
         const token = localStorage.getItem('authToken')
-        const res = await fetch('http://localhost:8000/api/user_bookmarks/', {
+        const res = await fetch('https://tsarepo-production.up.railway.app/api/user_bookmarks/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ const Directory = () => {
         const businesses = await Promise.all(
           placeIds.map(async (pid) => {
             try {
-              const r = await fetch('http://localhost:8000/api/getBusiness/', {
+              const r = await fetch('https://tsarepo-production.up.railway.app/api/getBusiness/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ place_id: pid }),
@@ -153,11 +153,10 @@ const Directory = () => {
         return
       }
 
-      // normal search / filter via backend
+      // normal search via backend
       const params = new URLSearchParams()
       if (q) params.append('q', q)
-      if (type) params.append('type', type)
-      const url = `http://localhost:8000/api/businesses/${params.toString() ? `?${params.toString()}` : ''}`
+      const url = `https://tsarepo-production.up.railway.app/api/businesses/${params.toString() ? `?${params.toString()}` : ''}`
 
       const response = await fetch(url)
       if (!response.ok) throw new Error(`HTTP ${response.status}`)
@@ -184,18 +183,49 @@ const Directory = () => {
     })
   }
 
+  // Helper function to check if a business matches a category
+  const matchesCategory = (business, category) => {
+    if (!category) return true
+    const types = business.types || []
+    const categoryLower = category.toLowerCase()
+    
+    // Map user-friendly category names to database types
+    const categoryMap = {
+      'non-profit': ['nonprofit', 'non_profit', 'non-profit', 'non_profit_organization'],
+      'community event': ['event', 'community_event', 'community-event', 'community_events'],
+      'support program': ['support', 'program', 'support_program', 'support-program', 'support_service'],
+      'community service': ['service', 'community_service', 'community-service', 'community_services']
+    }
+    
+    const searchTerms = categoryMap[categoryLower] || [categoryLower]
+    
+    // Check if any type matches any search term
+    return searchTerms.some(term => 
+      types.some(type => {
+        const typeLower = type.toLowerCase()
+        return typeLower === term || typeLower.includes(term) || term.includes(typeLower)
+      })
+    )
+  }
+
   const applyNearFilterAndSort = (arr) => {
     const enriched = withDistance(arr)
+    
+    // Filter by category if selected
+    let filtered = enriched
+    if (sortByCategory) {
+      filtered = enriched.filter(b => matchesCategory(b, sortByCategory))
+    }
+    
     if (nearOnly && effectiveLocation) {
-      return enriched
+      filtered = filtered
         .filter(b => b._distanceKm == null ? false : b._distanceKm <= radiusKm)
         .sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
+    } else if (effectiveLocation) {
+      filtered = filtered.sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
     }
-    // default sort: nearest first (if we have location), otherwise leave as-is
-    if (effectiveLocation) {
-      return enriched.sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
-    }
-    return enriched
+    
+    return filtered
   }
 
   const splitBookmarksFirst = (arr) => {
@@ -214,25 +244,9 @@ const Directory = () => {
     getListings()
   }, [])
 
-  // react to filter changes (auto-load bookmarks or apply type)
-  useEffect(() => {
-    if (filter === 'bookmarks') {
-      setIsSearching(true)
-      getListings('', 'bookmarks')
-    } else if (filter && filter !== 'custom') {
-      setIsSearching(true)
-      getListings('', filter)
-    } else if (!filter) {
-      setIsSearching(true)
-      getListings()
-    }
-  }, [filter])
-
   const handleSearch = async () => {
     setIsSearching(true)
-    // If using custom filter, send the searchQuery as q; otherwise apply filter as type param
-    if (filter === 'custom') await getListings(searchQuery.trim(), '')
-    else await getListings(searchQuery.trim(), filter)
+    await getListings(searchQuery.trim())
   }
 
   const addBookmark = async (placeId, e) => {
@@ -245,7 +259,7 @@ const Directory = () => {
     if (token) headers.Authorization = `Token ${token}`
 
     try {
-      const res = await fetch('http://localhost:8000/api/add_bookmark/', {
+      const res = await fetch('https://tsarepo-production.up.railway.app/api/add_bookmark/', {
         method: 'POST',
         headers,
         body: JSON.stringify({ business: placeId }),
@@ -259,7 +273,7 @@ const Directory = () => {
   }
 
   useEffect(() => {
-    let url = 'http://localhost:8000/api/resources/?'
+    let url = 'https://tsarepo-production.up.railway.app/api/resources/?'
     if (category) url += `category=${category}&`
     fetch(url).then(r => r.json()).then(data => setResources(data.results || data))
   }, [category])
@@ -270,7 +284,7 @@ const Directory = () => {
     
     const fetchNearbyBusinesses = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/nearby_businesses/', {
+        const res = await fetch('https://tsarepo-production.up.railway.app/api/nearby_businesses/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -401,74 +415,34 @@ const Directory = () => {
               </div>
             </div>
 
-            {/* Filter Dropdown */}
+            {/* Category Sort Dropdown */}
             <div className="w-full md:w-auto">
-              <label htmlFor="filter-by" className="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
-                Filter By Category
+              <label htmlFor="category-sort" className="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
+                Sort by Category
               </label>
         <select
-          onChange={(e) => setFilter(e.target.value)}
-          id="filter-by"
-          value={filter}
+                id="category-sort"
+                value={sortByCategory}
+                onChange={(e) => setSortByCategory(e.target.value)}
                 className="bf-input min-w-[200px]"
-        >
+              >
                 <option value="">All Categories</option>
-          <option value="restaurant">Restaurants</option>
-          <option value="cafe">Cafes</option>
-          <option value="bar">Bars</option>
-          <option value="park">Parks</option>
-          <option value="museum">Museums</option>
-          <option value="gym">Gyms</option>
-          <option value="hospital">Hospitals</option>
-          <option value="pharmacy">Pharmacies</option>
-          <option value="supermarket">Supermarkets</option>
-          <option value="shopping_mall">Shopping Malls</option>
-          <option value="movie_theater">Theaters</option>
-          <option value="library">Libraries</option>
-          <option value="bank">Banks</option>
-          <option value="post_office">Post Offices</option>
-          <option value="gas_station">Gas Stations</option>
-          <option value="lodging">Hotels</option>
-                {isAuthenticated && <option value="bookmarks">⭐ My Bookmarked Businesses</option>}
-                <option value="custom">Custom Search...</option>
+                <option value="Non-Profit">Non-Profit</option>
+                <option value="Community Event">Community Event</option>
+                <option value="Support Program">Support Program</option>
+                <option value="Community Service">Community Service</option>
         </select>
             </div>
 
             {/* Search Button */}
             <button
               onClick={handleSearch}
-              disabled={isSearching || (!searchQuery.trim() && filter !== 'custom')}
+              disabled={isSearching || !searchQuery.trim()}
               className="bf-button-primary whitespace-nowrap"
             >
               {isSearching ? 'Searching…' : 'Search'}
             </button>
           </div>
-
-          {/* Custom text query input */}
-        {filter === "custom" && (
-            <div className="mt-4 pt-4 border-t border-slate-300/40 dark:border-slate-700">
-              <label htmlFor="custom-query" className="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
-                Custom Search Query
-              </label>
-              <div className="flex gap-2">
-            <input
-                  id="custom-query"
-              type="text"
-              placeholder='e.g. "pizza near Seattle" or "123 Main St"'
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bf-input flex-1"
-            />
-            <button
-              onClick={handleSearch}
-              disabled={!searchQuery.trim() || isSearching}
-                  className="bf-button-primary"
-            >
-              {isSearching ? "Searching..." : "Search"}
-            </button>
-              </div>
-            </div>
-        )}
         </div>
 
         {/* Results Section */}
@@ -485,14 +459,14 @@ const Directory = () => {
         ) : listings.length === 0 ? (
             <div className="bf-card p-12 text-center">
               <p className="text-slate-700 dark:text-slate-300 text-lg">No businesses found</p>
-              <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">Try adjusting your search or filter criteria</p>
+              <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">Try adjusting your search criteria</p>
             </div>
           ) : (
             <>
               {(() => {
                 const nearFiltered = applyNearFilterAndSort(listings)
                 const { bookmarked, rest } = splitBookmarksFirst(nearFiltered)
-                const showBookmarksSection = isAuthenticated && bookmarked.length > 0 && filter !== 'bookmarks'
+                const showBookmarksSection = isAuthenticated && bookmarked.length > 0
 
                 return (
                   <>

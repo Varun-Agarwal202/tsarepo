@@ -100,7 +100,11 @@ def fetch_businesses(request):
                     photos.append(f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={photo['photo_reference']}&key={api_key}")
             business.photos = photos
             business.reviews = details.get('reviews', [])
-            business.types = details.get('types', []) or place.get('types', [])
+            types = details.get('types', []) or place.get('types', [])
+            # Automatically add "nonprofit" to types for all businesses from Google Maps API
+            if 'nonprofit' not in types:
+                types.append('nonprofit')
+            business.types = types
             business.save()
 
     return JsonResponse(results, safe=False)
@@ -282,6 +286,25 @@ def featured_resources(request):
     if len(businesses) == 0:
         return JsonResponse([], safe=False)
     
+    # Helper function to get a meaningful category
+    def get_category(business):
+        if not business.types:
+            return 'Community Resource'
+        
+        # Filter out generic/unhelpful types
+        generic_types = {'general', 'establishment', 'point_of_interest', 'place'}
+        meaningful_types = [t for t in business.types if t.lower() not in generic_types]
+        
+        if meaningful_types:
+            # Use the first meaningful type and format it nicely
+            category = meaningful_types[0]
+            # Convert snake_case to Title Case
+            category = category.replace('_', ' ').title()
+            return category
+        
+        # If only generic types, return a default
+        return 'Community Resource'
+    
     results = []
     for business in businesses:
         results.append({
@@ -290,7 +313,7 @@ def featured_resources(request):
             'name': business.name,
             'address': business.address,
             'rating': business.rating,
-            'category': business.types[0] if business.types else 'General',
+            'category': get_category(business),
             'description': business.special_offers or f"{business.name} located at {business.address}",
             'phone': business.contact_number,
             'email': None,  # Businesses don't have email in current model
@@ -348,3 +371,58 @@ def submit_resource(request):
         }, status=201)
     except Exception as e:
         return JsonResponse({'error': f'Failed to submit resource: {str(e)}'}, status=500)
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def geocode_address(request):
+    """Geocode an address to get coordinates"""
+    api_key = getattr(settings, 'GOOGLE_PLACES_API_KEY', None)
+    if not api_key:
+        return JsonResponse({'error': 'API key not configured'}, status=500)
+    
+    data = request.data if request.method == 'POST' else request.GET
+    address = data.get('address', '').strip()
+    
+    if not address:
+        return JsonResponse({'error': 'Address is required'}, status=400)
+    
+    try:
+        url = "https://maps.googleapis.com/maps/api/geocode/json"
+        params = {
+            'address': address,
+            'key': api_key
+        }
+        response = requests.get(url, params=params, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        data = response.json()
+        
+        if data.get('status') == 'OK' and data.get('results'):
+            result = data['results'][0]
+            location = result['geometry']['location']
+            return JsonResponse({
+                'success': True,
+                'latitude': location['lat'],
+                'longitude': location['lng'],
+                'formatted_address': result.get('formatted_address', address)
+            })
+        else:
+            status = data.get('status', 'UNKNOWN_ERROR')
+            error_message = data.get('error_message', f'Geocoding failed: {status}')
+            
+            # Provide helpful error messages
+            if status == 'REQUEST_DENIED':
+                error_message = 'Geocoding API access denied. Please check API key configuration and ensure Geocoding API is enabled.'
+            elif status == 'ZERO_RESULTS':
+                error_message = 'No results found for this address. Please try a more specific location.'
+            elif status == 'OVER_QUERY_LIMIT':
+                error_message = 'Geocoding API quota exceeded. Please try again later.'
+            
+            return JsonResponse({
+                'success': False,
+                'error': error_message,
+                'status': status
+            }, status=400)
+    except requests.exceptions.RequestException as e:
+        return JsonResponse({'error': f'Network error: {str(e)}'}, status=500)
+    except Exception as e:
+        return JsonResponse({'error': f'Geocoding error: {str(e)}'}, status=500)

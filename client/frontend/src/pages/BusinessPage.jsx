@@ -10,7 +10,7 @@ const BusinessPage = () => {
     }, []);
     const getBusiness = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/getBusiness/', {
+            const response = await fetch('https://tsarepo-production.up.railway.app/api/getBusiness/', {
                 method: 'POST',
                 body: JSON.stringify({ place_id: id }),
                 headers: { 'Content-Type': 'application/json' },

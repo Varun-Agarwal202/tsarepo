@@ -31,7 +31,7 @@ const Contact = () => {
     setSubmitting(true)
 
     try {
-      const res = await fetch('http://localhost:8000/api/submissions/', {
+      const res = await fetch('https://tsarepo-production.up.railway.app/api/submissions/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -88,7 +88,7 @@ const Contact = () => {
 
         <form onSubmit={handleSubmit} className="bf-card p-6 space-y-4">
           <div>
-            <label htmlFor="name" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="name" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Resource Name *
             </label>
             <input
@@ -104,7 +104,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label htmlFor="category" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="category" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Category *
             </label>
             <select
@@ -127,7 +127,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="description" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Description *
             </label>
             <textarea
@@ -144,7 +144,7 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="phone" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+              <label htmlFor="phone" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                 Phone (optional)
               </label>
               <input
@@ -159,7 +159,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+              <label htmlFor="email" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                 Resource Email (optional)
               </label>
               <input
@@ -175,7 +175,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label htmlFor="address" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="address" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Address (optional)
             </label>
             <input
@@ -190,7 +190,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label htmlFor="website" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="website" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Website (optional)
             </label>
             <input
@@ -204,11 +204,11 @@ const Contact = () => {
             />
           </div>
 
-          <div className="pt-4 border-t border-slate-700">
-            <h3 className="text-sm font-semibold text-slate-200 mb-4">Your Information</h3>
+          <div className="pt-4 border-t border-slate-300 dark:border-slate-700">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-200 mb-4">Your Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="submitter_name" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+                <label htmlFor="submitter_name" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                   Your Name *
                 </label>
                 <input
@@ -224,7 +224,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="submitter_email" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+                <label htmlFor="submitter_email" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                   Your Email *
                 </label>
                 <input

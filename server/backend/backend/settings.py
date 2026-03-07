@@ -29,7 +29,7 @@ DEBUG = True
 # WARNING: development-only placement of Google API key. Move to environment or .env for production.
 GOOGLE_PLACES_API_KEY = os.environ.get('GOOGLE_PLACES_API_KEY', 'AIzaSyCoxkur1IMrFgWYnTrdWANhisU2VBM9HaQ')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -100,13 +100,18 @@ MIDDLEWARE = [
 ]
 
 HEADLESS_ONLY = True
+
+
+CORS_ALLOW_CREDENTIALS = True   # <--- ensure credentials header is 'true'
 CORS_ALLOWED_ORIGINS = [
+    "https://tsarepo.vercel.app",
+    "https://tsarepo-production.up.railway.app",  # add this
     "http://localhost:5173",
 ]
 
-CORS_ALLOW_CREDENTIALS = True   # <--- ensure credentials header is 'true'
-
 CSRF_TRUSTED_ORIGINS = [
+    "https://tsarepo.vercel.app",
+    "https://tsarepo-production.up.railway.app",  # add this
     "http://localhost:5173",
 ]
 
@@ -134,15 +139,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # settings.py
+# Database
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+# Set default values for the environment variables if they’re not already set
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("PGDATABASE", "railway"),  # default to Railway DB
+        "USER": os.environ.get("PGUSER", "postgres"),
+        "PASSWORD": os.environ.get("PGPASSWORD", "oFGrdmVIiyzvmJUsjTyHgfQxRDcoWQMG"),
+        "HOST": os.environ.get("PGHOST", "postgres.railway.internal"),
+        "PORT": os.environ.get("PGPORT", "5432"),
     }
 }
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
