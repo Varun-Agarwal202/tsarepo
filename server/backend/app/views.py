@@ -282,6 +282,25 @@ def featured_resources(request):
     if len(businesses) == 0:
         return JsonResponse([], safe=False)
     
+    # Helper function to get a meaningful category
+    def get_category(business):
+        if not business.types:
+            return 'Community Resource'
+        
+        # Filter out generic/unhelpful types
+        generic_types = {'general', 'establishment', 'point_of_interest', 'place'}
+        meaningful_types = [t for t in business.types if t.lower() not in generic_types]
+        
+        if meaningful_types:
+            # Use the first meaningful type and format it nicely
+            category = meaningful_types[0]
+            # Convert snake_case to Title Case
+            category = category.replace('_', ' ').title()
+            return category
+        
+        # If only generic types, return a default
+        return 'Community Resource'
+    
     results = []
     for business in businesses:
         results.append({
@@ -290,7 +309,7 @@ def featured_resources(request):
             'name': business.name,
             'address': business.address,
             'rating': business.rating,
-            'category': business.types[0] if business.types else 'General',
+            'category': get_category(business),
             'description': business.special_offers or f"{business.name} located at {business.address}",
             'phone': business.contact_number,
             'email': None,  # Businesses don't have email in current model
