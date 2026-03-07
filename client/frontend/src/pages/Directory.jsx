@@ -23,6 +23,7 @@ const Directory = () => {
   const [nearOnly, setNearOnly] = useState(true)
   const [resources, setResources] = useState([])
   const [category, setCategory] = useState('')
+  const [sortByCategory, setSortByCategory] = useState('')
   const [center, setCenter] = useState({ lat: 40.7128, lng: -74.0060 }) // default to NYC
   const [selectedResource, setSelectedResource] = useState(null)
   const [selectedMapPin, setSelectedMapPin] = useState(null)
@@ -182,18 +183,49 @@ const Directory = () => {
     })
   }
 
+  // Helper function to check if a business matches a category
+  const matchesCategory = (business, category) => {
+    if (!category) return true
+    const types = business.types || []
+    const categoryLower = category.toLowerCase()
+    
+    // Map user-friendly category names to database types
+    const categoryMap = {
+      'non-profit': ['nonprofit', 'non_profit', 'non-profit', 'non_profit_organization'],
+      'community event': ['event', 'community_event', 'community-event', 'community_events'],
+      'support program': ['support', 'program', 'support_program', 'support-program', 'support_service'],
+      'community service': ['service', 'community_service', 'community-service', 'community_services']
+    }
+    
+    const searchTerms = categoryMap[categoryLower] || [categoryLower]
+    
+    // Check if any type matches any search term
+    return searchTerms.some(term => 
+      types.some(type => {
+        const typeLower = type.toLowerCase()
+        return typeLower === term || typeLower.includes(term) || term.includes(typeLower)
+      })
+    )
+  }
+
   const applyNearFilterAndSort = (arr) => {
     const enriched = withDistance(arr)
+    
+    // Filter by category if selected
+    let filtered = enriched
+    if (sortByCategory) {
+      filtered = enriched.filter(b => matchesCategory(b, sortByCategory))
+    }
+    
     if (nearOnly && effectiveLocation) {
-      return enriched
+      filtered = filtered
         .filter(b => b._distanceKm == null ? false : b._distanceKm <= radiusKm)
         .sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
+    } else if (effectiveLocation) {
+      filtered = filtered.sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
     }
-    // default sort: nearest first (if we have location), otherwise leave as-is
-    if (effectiveLocation) {
-      return enriched.sort((a, b) => (a._distanceKm ?? 1e9) - (b._distanceKm ?? 1e9))
-    }
-    return enriched
+    
+    return filtered
   }
 
   const splitBookmarksFirst = (arr) => {
@@ -381,6 +413,25 @@ const Directory = () => {
                   className="bf-input pl-10 w-full"
                 />
               </div>
+            </div>
+
+            {/* Category Sort Dropdown */}
+            <div className="w-full md:w-auto">
+              <label htmlFor="category-sort" className="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">
+                Sort by Category
+              </label>
+        <select
+                id="category-sort"
+                value={sortByCategory}
+                onChange={(e) => setSortByCategory(e.target.value)}
+                className="bf-input min-w-[200px]"
+              >
+                <option value="">All Categories</option>
+                <option value="Non-Profit">Non-Profit</option>
+                <option value="Community Event">Community Event</option>
+                <option value="Support Program">Support Program</option>
+                <option value="Community Service">Community Service</option>
+        </select>
             </div>
 
             {/* Search Button */}

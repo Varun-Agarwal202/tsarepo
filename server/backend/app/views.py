@@ -100,7 +100,11 @@ def fetch_businesses(request):
                     photos.append(f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={photo['photo_reference']}&key={api_key}")
             business.photos = photos
             business.reviews = details.get('reviews', [])
-            business.types = details.get('types', []) or place.get('types', [])
+            types = details.get('types', []) or place.get('types', [])
+            # Automatically add "nonprofit" to types for all businesses from Google Maps API
+            if 'nonprofit' not in types:
+                types.append('nonprofit')
+            business.types = types
             business.save()
 
     return JsonResponse(results, safe=False)
