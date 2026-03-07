@@ -43,12 +43,12 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 relative">
+    <nav className="bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 relative">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2"
+            className="md:hidden text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -56,7 +56,7 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => handleNavClick('/')}
-            className="text-2xl font-semibold dark:text-white"
+            className="text-2xl font-semibold text-gray-900 dark:text-white"
             aria-label={t('nav.home', language)}
           >
             Community Resource Hub
@@ -74,7 +74,7 @@ const Navbar = () => {
           </button>
           <button
             onClick={toggleTheme}
-            className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5"
+            className="text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5"
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {isDark ? (
@@ -99,7 +99,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/')}
-                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
+                className="py-2 px-3 text-gray-700 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
                 aria-label={t('nav.home', language)}
               >
                 {t('nav.home', language)}
@@ -108,7 +108,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/directory')}
-                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
+                className="py-2 px-3 text-gray-700 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
                 aria-label={t('nav.directory', language)}
               >
                 {t('nav.directory', language)}
@@ -117,7 +117,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/about')}
-                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
+                className="py-2 px-3 text-gray-700 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
                 aria-label={t('nav.about', language)}
               >
                 {t('nav.about', language)}
@@ -126,7 +126,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/contact')}
-                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
+                className="py-2 px-3 text-gray-700 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
                 aria-label={t('nav.contact', language)}
               >
                 {t('nav.contact', language)}
@@ -135,7 +135,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/reference')}
-                className="py-2 px-3 dark:text-white hover:text-sky-400 transition-colors"
+                className="py-2 px-3 text-gray-700 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
                 aria-label={t('nav.reference', language)}
               >
                 {t('nav.reference', language)}
@@ -156,7 +156,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/')}
-                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                className="w-full text-left py-3 px-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label={t('nav.home', language)}
               >
                 {t('nav.home', language)}
@@ -165,7 +165,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/directory')}
-                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                className="w-full text-left py-3 px-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label={t('nav.directory', language)}
               >
                 {t('nav.directory', language)}
@@ -174,7 +174,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/about')}
-                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                className="w-full text-left py-3 px-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label={t('nav.about', language)}
               >
                 {t('nav.about', language)}
@@ -183,7 +183,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/contact')}
-                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                className="w-full text-left py-3 px-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label={t('nav.contact', language)}
               >
                 {t('nav.contact', language)}
@@ -192,7 +192,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => handleNavClick('/reference')}
-                className="w-full text-left py-3 px-3 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                className="w-full text-left py-3 px-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label={t('nav.reference', language)}
               >
                 {t('nav.reference', language)}
