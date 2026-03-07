@@ -72,7 +72,7 @@ export default function SubmitResource() {
 
         <form onSubmit={handleSubmit} className="bf-card p-6 space-y-4">
           <div>
-            <label htmlFor="name" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="name" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Resource Name *
             </label>
             <input
@@ -88,7 +88,7 @@ export default function SubmitResource() {
           </div>
 
           <div>
-            <label htmlFor="category" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="category" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Category *
             </label>
             <select
@@ -111,7 +111,7 @@ export default function SubmitResource() {
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="description" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Description *
             </label>
             <textarea
@@ -128,7 +128,7 @@ export default function SubmitResource() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="phone" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+              <label htmlFor="phone" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                 Phone (optional)
               </label>
               <input
@@ -143,7 +143,7 @@ export default function SubmitResource() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+              <label htmlFor="email" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                 Resource Email (optional)
               </label>
               <input
@@ -159,7 +159,7 @@ export default function SubmitResource() {
           </div>
 
           <div>
-            <label htmlFor="address" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="address" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Address (optional)
             </label>
             <input
@@ -174,7 +174,7 @@ export default function SubmitResource() {
           </div>
 
           <div>
-            <label htmlFor="website" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+            <label htmlFor="website" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
               Website (optional)
             </label>
             <input
@@ -188,11 +188,11 @@ export default function SubmitResource() {
             />
           </div>
 
-          <div className="pt-4 border-t border-slate-700">
-            <h3 className="text-sm font-semibold text-slate-200 mb-4">Your Information</h3>
+          <div className="pt-4 border-t border-slate-300 dark:border-slate-700">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-200 mb-4">Your Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="submitter_name" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+                <label htmlFor="submitter_name" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                   Your Name *
                 </label>
                 <input
@@ -208,7 +208,7 @@ export default function SubmitResource() {
               </div>
 
               <div>
-                <label htmlFor="submitter_email" className="block text-xs font-medium text-slate-300 uppercase tracking-wide mb-2">
+                <label htmlFor="submitter_email" className="block text-xs font-medium text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-2">
                   Your Email *
                 </label>
                 <input

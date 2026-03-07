@@ -17,13 +17,13 @@ export default function Reference() {
 
         <section className="space-y-6">
           <div className="bf-card p-5 md:p-6">
-            <h2 className="text-xl font-semibold text-slate-100 mb-3">Sources &amp; Attribution</h2>
-            <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-slate-200/90">
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">Sources &amp; Attribution</h2>
+            <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-slate-700 dark:text-slate-200/90">
               <li>
                 React –{' '}
                 <a
                   href="https://react.dev"
-                  className="text-sky-300 underline hover:text-sky-200"
+                  className="text-sky-600 dark:text-sky-300 underline hover:text-sky-700 dark:hover:text-sky-200"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -34,7 +34,7 @@ export default function Reference() {
                 Django REST Framework –{' '}
                 <a
                   href="https://www.django-rest-framework.org/"
-                  className="text-sky-300 underline hover:text-sky-200"
+                  className="text-sky-600 dark:text-sky-300 underline hover:text-sky-700 dark:hover:text-sky-200"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -45,7 +45,7 @@ export default function Reference() {
                 Tailwind CSS –{' '}
                 <a
                   href="https://tailwindcss.com"
-                  className="text-sky-300 underline hover:text-sky-200"
+                  className="text-sky-600 dark:text-sky-300 underline hover:text-sky-700 dark:hover:text-sky-200"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -58,22 +58,22 @@ export default function Reference() {
           </div>
 
           <div className="bf-card p-5 md:p-6">
-            <h2 className="text-xl font-semibold text-slate-100 mb-3">Copyright &amp; Permissions</h2>
-            <p className="text-sm md:text-base text-slate-200/90">
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">Copyright &amp; Permissions</h2>
+            <p className="text-sm md:text-base text-slate-700 dark:text-slate-200/90">
               All original content is created by the development team and contributors. External
               libraries and services are used under their respective licenses.
             </p>
             <div className="mt-4 space-y-2">
               <a
                 href="/copyright-checklist.pdf"
-                className="inline-flex items-center text-sm md:text-base text-sky-300 underline hover:text-sky-200"
+                className="inline-flex items-center text-sm md:text-base text-sky-600 dark:text-sky-300 underline hover:text-sky-700 dark:hover:text-sky-200"
               >
                 Download Student Copyright Checklist (PDF)
               </a>
               <br />
               <a
                 href="/work-log.pdf"
-                className="inline-flex items-center text-sm md:text-base text-sky-300 underline hover:text-sky-200"
+                className="inline-flex items-center text-sm md:text-base text-sky-600 dark:text-sky-300 underline hover:text-sky-700 dark:hover:text-sky-200"
               >
                 Download Work Log (PDF)
               </a>

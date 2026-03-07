@@ -6,10 +6,10 @@ const DetailsPage = ({ data }) => {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{data.name}</h1>
-        <p className="text-gray-600 mb-2">{data.address}</p>
-        <p className="mb-2">Phone: {data.contact_number || 'N/A'}</p>
-        <p className="mb-2">Rating: {data.rating} ⭐ ({data.user_ratings_total} reviews)</p>
+        <h1 className="text-3xl font-bold mb-2 text-slate-900 dark:text-slate-50">{data.name}</h1>
+        <p className="text-slate-600 dark:text-slate-400 mb-2">{data.address}</p>
+        <p className="text-slate-700 dark:text-slate-300 mb-2">Phone: {data.contact_number || 'N/A'}</p>
+        <p className="text-slate-700 dark:text-slate-300 mb-2">Rating: {data.rating} ⭐ ({data.user_ratings_total} reviews)</p>
         {data.website && (
           <a 
             href={data.website} 
@@ -23,7 +23,7 @@ const DetailsPage = ({ data }) => {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Photos</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">Photos</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {data.photos?.slice(0, 8).map((photoUrl, index) => (
             <img 
@@ -37,14 +37,14 @@ const DetailsPage = ({ data }) => {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Opening Hours</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">Opening Hours</h2>
         {data.opening_hours?.weekday_text?.map((hours, index) => (
           <p key={index} className="mb-1">{hours}</p>
         ))}
       </div>
 
       <div>
-        <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">Reviews</h2>
         <div className="space-y-4">
           {data.reviews?.map((review, index) => (
             <div key={index} className="border rounded-lg p-4 shadow-sm card">
@@ -58,7 +58,7 @@ const DetailsPage = ({ data }) => {
         </div>
       </div>
       <div>
-        <h2 className="text-2xl font-semibold mb-4">Leave a Review</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">Leave a Review</h2>
         <div className="border rounded-lg p-4 shadow-sm card">
           <form>
             <div className="mb-4">

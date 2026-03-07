@@ -129,11 +129,11 @@ export default function Signup ()  {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 Join the BusinessFinder community
               </span>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-50">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
                 Create an account to explore
-                <span className="text-emerald-300"> local favorites</span>.
+                <span className="text-emerald-600 dark:text-emerald-300"> local favorites</span>.
               </h1>
-              <p className="text-sm md:text-base text-slate-400 max-w-xl">
+              <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 max-w-xl">
                 Whether you&apos;re discovering new spots or representing your own business,
                 BusinessFinder helps connect you with your local community.
               </p>
@@ -142,8 +142,8 @@ export default function Signup ()  {
             {/* Right: Signup card */}
             <section className="bf-card w-full max-w-md mx-auto p-6 md:p-7 lg:p-8">
               <header className="mb-6">
-                <h2 className="text-xl md:text-2xl font-semibold text-slate-50">Sign up</h2>
-                <p className="mt-1.5 text-xs md:text-sm text-slate-400">
+                <h2 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-slate-50">Sign up</h2>
+                <p className="mt-1.5 text-xs md:text-sm text-slate-600 dark:text-slate-400">
                   Fill in your details to get started. You can sign up as a regular user or a business.
                 </p>
               </header>
