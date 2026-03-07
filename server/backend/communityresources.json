@@ -1,0 +1,2924 @@
+{
+  "resources": [
+    {
+      "name": "Utah Food Bank",
+      "address": "3150 S 900 W, Salt Lake City, UT 84119",
+      "latitude": 40.7073,
+      "longitude": -111.9118,
+      "reviews": [],
+      "place_id": "ChIJ_utahfoodbank01",
+      "types": [
+        "Non-Profit",
+        "Food & Nutrition",
+        "Donation"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 312,
+      "price_level": 0,
+      "website": "https://www.utahfoodbank.org",
+      "contact_number": "(801) 978-2452",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free food boxes available for qualifying families"
+    },
+    {
+      "name": "Crossroads Urban Center Food Pantry",
+      "address": "347 S 400 E, Salt Lake City, UT 84111",
+      "latitude": 40.758,
+      "longitude": -111.883,
+      "reviews": [],
+      "place_id": "ChIJ_crossroadspantry01",
+      "types": [
+        "Non-Profit",
+        "Food & Nutrition",
+        "Pantry"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 178,
+      "price_level": 0,
+      "website": "https://www.crossroadsuc.org",
+      "contact_number": "(801) 364-7765",
+      "opening_hours": {
+        "Monday": "9:00 AM - 1:00 PM",
+        "Tuesday": "9:00 AM - 1:00 PM",
+        "Wednesday": "9:00 AM - 1:00 PM",
+        "Thursday": "9:00 AM - 1:00 PM",
+        "Friday": "9:00 AM - 1:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": null
+    },
+    {
+      "name": "St. Vincent de Paul Community Meals",
+      "address": "437 W 200 S, Salt Lake City, UT 84101",
+      "latitude": 40.76,
+      "longitude": -111.897,
+      "reviews": [],
+      "place_id": "ChIJ_stvincent01",
+      "types": [
+        "Non-Profit",
+        "Food & Nutrition",
+        "Hot Meals"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 95,
+      "price_level": 0,
+      "website": null,
+      "contact_number": "(801) 428-1235",
+      "opening_hours": {
+        "Monday": "7:00 AM - 9:00 AM",
+        "Tuesday": "7:00 AM - 9:00 AM",
+        "Wednesday": "7:00 AM - 9:00 AM",
+        "Thursday": "7:00 AM - 9:00 AM",
+        "Friday": "7:00 AM - 9:00 AM",
+        "Saturday": "7:00 AM - 9:00 AM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Hot meals served daily"
+    },
+    {
+      "name": "Liberty Park Farmers Market",
+      "address": "600 E 900 S, Salt Lake City, UT 84105",
+      "latitude": 40.7442,
+      "longitude": -111.8738,
+      "reviews": [],
+      "place_id": "ChIJ_libertyfarmers01",
+      "types": [
+        "Community Event",
+        "Food & Nutrition",
+        "Market"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 540,
+      "price_level": 1,
+      "website": "https://www.slcfarmersmarket.org",
+      "contact_number": "(801) 535-6110",
+      "opening_hours": {
+        "Saturday": "8:00 AM - 2:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "SNAP/EBT accepted and doubled with Double Up Food Bucks"
+    },
+    {
+      "name": "Salvation Army Food Drive",
+      "address": "223 S 400 W, Salt Lake City, UT 84101",
+      "latitude": 40.7588,
+      "longitude": -111.9002,
+      "reviews": [],
+      "place_id": "ChIJ_salvationarmy01",
+      "types": [
+        "Community Event",
+        "Food & Nutrition",
+        "Donation Drive"
+      ],
+      "rating": 4.4,
+      "user_ratings_total": 67,
+      "price_level": 0,
+      "website": "https://www.salvationarmyutah.org",
+      "contact_number": "(801) 323-0365",
+      "opening_hours": {
+        "Monday": "9:00 AM - 5:00 PM",
+        "Tuesday": "9:00 AM - 5:00 PM",
+        "Wednesday": "9:00 AM - 5:00 PM",
+        "Thursday": "9:00 AM - 5:00 PM",
+        "Friday": "9:00 AM - 5:00 PM",
+        "Saturday": "9:00 AM - 3:00 PM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": null
+    },
+    {
+      "name": "The Road Home Emergency Shelter",
+      "address": "210 S Rio Grande St, Salt Lake City, UT 84101",
+      "latitude": 40.7571,
+      "longitude": -111.9041,
+      "reviews": [],
+      "place_id": "ChIJ_roadhome01",
+      "types": [
+        "Non-Profit",
+        "Housing & Shelter",
+        "Emergency Shelter"
+      ],
+      "rating": 3.9,
+      "user_ratings_total": 204,
+      "price_level": 0,
+      "website": "https://www.theroadhome.org",
+      "contact_number": "(801) 359-4142",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Emergency shelter, case management, and housing placement services"
+    },
+    {
+      "name": "Volunteers of America Utah Housing",
+      "address": "687 E 100 S, Salt Lake City, UT 84102",
+      "latitude": 40.7622,
+      "longitude": -111.8759,
+      "reviews": [],
+      "place_id": "ChIJ_voahousing01",
+      "types": [
+        "Non-Profit",
+        "Housing & Shelter",
+        "Transitional Housing"
+      ],
+      "rating": 4.1,
+      "user_ratings_total": 88,
+      "price_level": 0,
+      "website": "https://www.voa.org/utah",
+      "contact_number": "(801) 537-7770",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Transitional housing programs for veterans and families"
+    },
+    {
+      "name": "Utah Rent Assistance Program",
+      "address": "195 N 1950 W, Salt Lake City, UT 84116",
+      "latitude": 40.7756,
+      "longitude": -111.928,
+      "reviews": [],
+      "place_id": "ChIJ_utahrent01",
+      "types": [
+        "Support Program",
+        "Housing & Shelter",
+        "Financial Assistance"
+      ],
+      "rating": 3.8,
+      "user_ratings_total": 150,
+      "price_level": 0,
+      "website": "https://jobs.utah.gov/housing",
+      "contact_number": "(801) 526-9675",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Emergency rental assistance for qualifying households"
+    },
+    {
+      "name": "YWCA Utah Family Crisis Shelter",
+      "address": "322 E 300 S, Salt Lake City, UT 84111",
+      "latitude": 40.7589,
+      "longitude": -111.8812,
+      "reviews": [],
+      "place_id": "ChIJ_ywcacrisis01",
+      "types": [
+        "Non-Profit",
+        "Housing & Shelter",
+        "Domestic Violence",
+        "Crisis Support"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 113,
+      "price_level": 0,
+      "website": "https://www.ywcautah.org",
+      "contact_number": "(801) 537-8600",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Safe housing, legal advocacy, and counseling for survivors of domestic violence"
+    },
+    {
+      "name": "SLC Warming Center",
+      "address": "888 S 400 W, Salt Lake City, UT 84101",
+      "latitude": 40.7505,
+      "longitude": -111.9008,
+      "reviews": [],
+      "place_id": "ChIJ_warming01",
+      "types": [
+        "Community Service",
+        "Housing & Shelter",
+        "Emergency Shelter"
+      ],
+      "rating": 4.1,
+      "user_ratings_total": 99,
+      "price_level": 0,
+      "website": "https://www.theroadhome.org",
+      "contact_number": "(801) 359-4142",
+      "opening_hours": {
+        "Monday": "7:00 PM - 7:00 AM",
+        "Tuesday": "7:00 PM - 7:00 AM",
+        "Wednesday": "7:00 PM - 7:00 AM",
+        "Thursday": "7:00 PM - 7:00 AM",
+        "Friday": "7:00 PM - 7:00 AM",
+        "Saturday": "7:00 PM - 7:00 AM",
+        "Sunday": "7:00 PM - 7:00 AM"
+      },
+      "photos": null,
+      "special_offers": "Open during extreme cold weather events. Free overnight warming."
+    },
+    {
+      "name": "Free Community Health Screening",
+      "address": "1000 W 900 N, Salt Lake City, UT 84116",
+      "latitude": 40.7812,
+      "longitude": -111.915,
+      "reviews": [],
+      "place_id": "ChIJ_healthscreen01",
+      "types": [
+        "Community Event",
+        "Health & Wellness",
+        "Screening"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 231,
+      "price_level": 0,
+      "website": "https://www.intermountainhealth.org",
+      "contact_number": "(801) 442-2000",
+      "opening_hours": {
+        "Saturday": "8:00 AM - 1:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free blood pressure, cholesterol, and glucose screenings. No insurance required."
+    },
+    {
+      "name": "Fourth Street Clinic",
+      "address": "404 W 400 S, Salt Lake City, UT 84101",
+      "latitude": 40.7566,
+      "longitude": -111.899,
+      "reviews": [],
+      "place_id": "ChIJ_fourthstreet01",
+      "types": [
+        "Non-Profit",
+        "Health & Wellness",
+        "Primary Care"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 192,
+      "price_level": 0,
+      "website": "https://www.fourthstreetclinic.org",
+      "contact_number": "(801) 364-0058",
+      "opening_hours": {
+        "Monday": "7:30 AM - 5:00 PM",
+        "Tuesday": "7:30 AM - 5:00 PM",
+        "Wednesday": "7:30 AM - 5:00 PM",
+        "Thursday": "7:30 AM - 5:00 PM",
+        "Friday": "7:30 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free primary care for people experiencing homelessness"
+    },
+    {
+      "name": "Free Yoga in the Park",
+      "address": "600 E 900 S, Salt Lake City, UT 84105",
+      "latitude": 40.7442,
+      "longitude": -111.8738,
+      "reviews": [],
+      "place_id": "ChIJ_freeyoga01",
+      "types": [
+        "Community Event",
+        "Health & Wellness",
+        "Fitness"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 410,
+      "price_level": 0,
+      "website": null,
+      "contact_number": null,
+      "opening_hours": {
+        "Sunday": "9:00 AM - 10:00 AM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free weekly outdoor yoga at Liberty Park. All skill levels welcome."
+    },
+    {
+      "name": "SLC Community Dental Clinic",
+      "address": "525 S 400 E, Salt Lake City, UT 84111",
+      "latitude": 40.7545,
+      "longitude": -111.8827,
+      "reviews": [],
+      "place_id": "ChIJ_dental01",
+      "types": [
+        "Support Program",
+        "Health & Wellness",
+        "Dental Care"
+      ],
+      "rating": 4.4,
+      "user_ratings_total": 167,
+      "price_level": 1,
+      "website": null,
+      "contact_number": "(801) 974-6876",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 3:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Sliding scale dental care for uninsured and low-income residents"
+    },
+    {
+      "name": "Free Community Flu Shot Clinic",
+      "address": "1000 W 900 N, Salt Lake City, UT 84116",
+      "latitude": 40.7812,
+      "longitude": -111.915,
+      "reviews": [],
+      "place_id": "ChIJ_flushot01",
+      "types": [
+        "Community Event",
+        "Health & Wellness",
+        "Immunization"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 267,
+      "price_level": 0,
+      "website": "https://www.saltlakecountyhealth.org",
+      "contact_number": "(385) 468-4100",
+      "opening_hours": {
+        "Saturday": "9:00 AM - 1:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free flu shots for all ages. No appointment necessary."
+    },
+    {
+      "name": "Salt Lake County Health Fair",
+      "address": "2001 S State St, Salt Lake City, UT 84190",
+      "latitude": 40.7264,
+      "longitude": -111.8879,
+      "reviews": [],
+      "place_id": "ChIJ_healthfair01",
+      "types": [
+        "Community Event",
+        "Health & Wellness",
+        "Health Fair"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 334,
+      "price_level": 0,
+      "website": "https://www.saltlakecountyhealth.org",
+      "contact_number": "(385) 468-4100",
+      "opening_hours": {
+        "Saturday": "9:00 AM - 3:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free screenings, dental checkups, and health resources for residents"
+    },
+    {
+      "name": "Utah Naloxone Distribution Program",
+      "address": "788 E 400 S, Salt Lake City, UT 84102",
+      "latitude": 40.757,
+      "longitude": -111.874,
+      "reviews": [],
+      "place_id": "ChIJ_naloxone01",
+      "types": [
+        "Support Program",
+        "Health & Wellness",
+        "Harm Reduction"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 88,
+      "price_level": 0,
+      "website": "https://www.health.utah.gov",
+      "contact_number": "(801) 538-6003",
+      "opening_hours": {
+        "Monday": "9:00 AM - 5:00 PM",
+        "Tuesday": "9:00 AM - 5:00 PM",
+        "Wednesday": "9:00 AM - 5:00 PM",
+        "Thursday": "9:00 AM - 5:00 PM",
+        "Friday": "9:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free naloxone kits and overdose prevention training"
+    },
+    {
+      "name": "Community Blood Drive",
+      "address": "100 N Mario Capecchi Dr, Salt Lake City, UT 84132",
+      "latitude": 40.7673,
+      "longitude": -111.8408,
+      "reviews": [],
+      "place_id": "ChIJ_blooddrive01",
+      "types": [
+        "Community Event",
+        "Health & Wellness",
+        "Volunteer"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 445,
+      "price_level": 0,
+      "website": "https://www.redcrossblood.org",
+      "contact_number": "1-800-733-2767",
+      "opening_hours": {
+        "Monday": "8:00 AM - 4:00 PM",
+        "Wednesday": "8:00 AM - 4:00 PM",
+        "Friday": "8:00 AM - 4:00 PM",
+        "Tuesday": "Closed",
+        "Thursday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free snacks for donors. Appointment required."
+    },
+    {
+      "name": "NAMI Utah Peer Support Group",
+      "address": "4545 S 700 E Suite 100, Salt Lake City, UT 84107",
+      "latitude": 40.6914,
+      "longitude": -111.881,
+      "reviews": [],
+      "place_id": "ChIJ_namiutah01",
+      "types": [
+        "Non-Profit",
+        "Mental Health",
+        "Peer Support"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 143,
+      "price_level": 0,
+      "website": "https://www.namiutah.org",
+      "contact_number": "(801) 323-9900",
+      "opening_hours": {
+        "Monday": "9:00 AM - 5:00 PM",
+        "Tuesday": "9:00 AM - 5:00 PM",
+        "Wednesday": "9:00 AM - 5:00 PM",
+        "Thursday": "9:00 AM - 5:00 PM",
+        "Friday": "9:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free peer support groups and mental health education programs"
+    },
+    {
+      "name": "Utah Crisis Line (24/7)",
+      "address": "285 W 400 N, Salt Lake City, UT 84103",
+      "latitude": 40.7693,
+      "longitude": -111.8975,
+      "reviews": [],
+      "place_id": "ChIJ_crisisline01",
+      "types": [
+        "Support Program",
+        "Mental Health",
+        "Crisis Support"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 321,
+      "price_level": 0,
+      "website": "https://www.utahcrisisline.org",
+      "contact_number": "1-800-273-8255",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Free confidential crisis counseling by phone 24/7"
+    },
+    {
+      "name": "Valley Mental Health Services",
+      "address": "5965 S 900 E, Murray, UT 84121",
+      "latitude": 40.6447,
+      "longitude": -111.8677,
+      "reviews": [],
+      "place_id": "ChIJ_valleymentalhealth01",
+      "types": [
+        "Support Program",
+        "Mental Health",
+        "Counseling"
+      ],
+      "rating": 4.3,
+      "user_ratings_total": 287,
+      "price_level": 1,
+      "website": "https://www.valleymentalhealth.net",
+      "contact_number": "(801) 984-9100",
+      "opening_hours": {
+        "Monday": "8:00 AM - 8:00 PM",
+        "Tuesday": "8:00 AM - 8:00 PM",
+        "Wednesday": "8:00 AM - 8:00 PM",
+        "Thursday": "8:00 AM - 8:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Sliding scale fees available. No one turned away for inability to pay."
+    },
+    {
+      "name": "Rape Recovery Center",
+      "address": "2035 S 1300 E, Salt Lake City, UT 84105",
+      "latitude": 40.7245,
+      "longitude": -111.8621,
+      "reviews": [],
+      "place_id": "ChIJ_raperecovery01",
+      "types": [
+        "Non-Profit",
+        "Mental Health",
+        "Crisis Support",
+        "Sexual Assault"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 155,
+      "price_level": 0,
+      "website": "https://www.raperecoverycenter.org",
+      "contact_number": "(801) 467-7273",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Free 24/7 crisis line, counseling, and advocacy for survivors of sexual assault"
+    },
+    {
+      "name": "Boys & Girls Club of Greater Salt Lake",
+      "address": "252 W 1200 N, Salt Lake City, UT 84103",
+      "latitude": 40.7795,
+      "longitude": -111.8965,
+      "reviews": [],
+      "place_id": "ChIJ_boysgirlsclub01",
+      "types": [
+        "Non-Profit",
+        "Youth Programs",
+        "After-School"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 312,
+      "price_level": 0,
+      "website": "https://www.bgcslc.org",
+      "contact_number": "(801) 532-8732",
+      "opening_hours": {
+        "Monday": "2:00 PM - 8:00 PM",
+        "Tuesday": "2:00 PM - 8:00 PM",
+        "Wednesday": "2:00 PM - 8:00 PM",
+        "Thursday": "2:00 PM - 8:00 PM",
+        "Friday": "2:00 PM - 8:00 PM",
+        "Saturday": "10:00 AM - 4:00 PM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Afterschool programs, tutoring, and summer camps for youth ages 6-18"
+    },
+    {
+      "name": "Big Brothers Big Sisters of Utah",
+      "address": "730 W 200 N, Salt Lake City, UT 84116",
+      "latitude": 40.7718,
+      "longitude": -111.908,
+      "reviews": [],
+      "place_id": "ChIJ_bbbs01",
+      "types": [
+        "Non-Profit",
+        "Youth Programs",
+        "Mentorship"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 203,
+      "price_level": 0,
+      "website": "https://www.bbbsutah.org",
+      "contact_number": "(801) 467-0600",
+      "opening_hours": {
+        "Monday": "8:30 AM - 5:00 PM",
+        "Tuesday": "8:30 AM - 5:00 PM",
+        "Wednesday": "8:30 AM - 5:00 PM",
+        "Thursday": "8:30 AM - 5:00 PM",
+        "Friday": "8:30 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free mentorship program pairing youth with adult mentors"
+    },
+    {
+      "name": "After-School STEM Program",
+      "address": "1375 S 2100 W, Salt Lake City, UT 84119",
+      "latitude": 40.7411,
+      "longitude": -111.9385,
+      "reviews": [],
+      "place_id": "ChIJ_stemprogram01",
+      "types": [
+        "Support Program",
+        "Youth Programs",
+        "STEM",
+        "Education"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 145,
+      "price_level": 0,
+      "website": "https://www.slcpl.org",
+      "contact_number": "(801) 594-8651",
+      "opening_hours": {
+        "Tuesday": "3:30 PM - 5:30 PM",
+        "Thursday": "3:30 PM - 5:30 PM",
+        "Monday": "Closed",
+        "Wednesday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "All materials provided. Free for all participants."
+    },
+    {
+      "name": "Utah Youth Village",
+      "address": "4595 S 2300 E, Salt Lake City, UT 84117",
+      "latitude": 40.692,
+      "longitude": -111.8205,
+      "reviews": [],
+      "place_id": "ChIJ_utahyouthvillage01",
+      "types": [
+        "Non-Profit",
+        "Youth Programs",
+        "Foster Care"
+      ],
+      "rating": 4.4,
+      "user_ratings_total": 98,
+      "price_level": 0,
+      "website": "https://www.youthvillage.org",
+      "contact_number": "(801) 278-7955",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Foster care support and family preservation services"
+    },
+    {
+      "name": "Spy Hop Youth Media Arts",
+      "address": "1017 S 300 W, Salt Lake City, UT 84101",
+      "latitude": 40.7471,
+      "longitude": -111.896,
+      "reviews": [],
+      "place_id": "ChIJ_spyhop01",
+      "types": [
+        "Non-Profit",
+        "Youth Programs",
+        "Arts & Culture",
+        "Media"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 367,
+      "price_level": 0,
+      "website": "https://www.spyhop.org",
+      "contact_number": "(801) 532-7600",
+      "opening_hours": {
+        "Monday": "2:00 PM - 8:00 PM",
+        "Tuesday": "2:00 PM - 8:00 PM",
+        "Wednesday": "2:00 PM - 8:00 PM",
+        "Thursday": "2:00 PM - 8:00 PM",
+        "Friday": "2:00 PM - 6:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free music, film, and digital media programs for youth ages 8-20"
+    },
+    {
+      "name": "Back-to-School Supply Drive",
+      "address": "2100 S State St, Salt Lake City, UT 84115",
+      "latitude": 40.7243,
+      "longitude": -111.8882,
+      "reviews": [],
+      "place_id": "ChIJ_schoolsupply01",
+      "types": [
+        "Community Event",
+        "Youth Programs",
+        "Donation Drive"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 312,
+      "price_level": 0,
+      "website": null,
+      "contact_number": "(801) 468-3000",
+      "opening_hours": {
+        "Saturday": "9:00 AM - 2:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free backpacks and school supplies for K-12 students in need"
+    },
+    {
+      "name": "Youth Basketball League",
+      "address": "1255 W 300 N, Salt Lake City, UT 84116",
+      "latitude": 40.7714,
+      "longitude": -111.9178,
+      "reviews": [],
+      "place_id": "ChIJ_youthbasketball01",
+      "types": [
+        "Support Program",
+        "Youth Programs",
+        "Sports & Recreation"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 189,
+      "price_level": 1,
+      "website": "https://www.slc.gov/parks",
+      "contact_number": "(801) 972-7800",
+      "opening_hours": {
+        "Monday": "6:00 AM - 10:00 PM",
+        "Tuesday": "6:00 AM - 10:00 PM",
+        "Wednesday": "6:00 AM - 10:00 PM",
+        "Thursday": "6:00 AM - 10:00 PM",
+        "Friday": "6:00 AM - 10:00 PM",
+        "Saturday": "8:00 AM - 8:00 PM",
+        "Sunday": "10:00 AM - 6:00 PM"
+      },
+      "photos": null,
+      "special_offers": "Scholarships available for families who need financial assistance"
+    },
+    {
+      "name": "Head Start Early Childhood Program",
+      "address": "1385 W 800 N, Salt Lake City, UT 84116",
+      "latitude": 40.78,
+      "longitude": -111.9188,
+      "reviews": [],
+      "place_id": "ChIJ_headstart01",
+      "types": [
+        "Support Program",
+        "Youth Programs",
+        "Early Childhood",
+        "Education"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 245,
+      "price_level": 0,
+      "website": "https://www.caputah.org/head-start",
+      "contact_number": "(801) 359-2444",
+      "opening_hours": {
+        "Monday": "7:30 AM - 5:30 PM",
+        "Tuesday": "7:30 AM - 5:30 PM",
+        "Wednesday": "7:30 AM - 5:30 PM",
+        "Thursday": "7:30 AM - 5:30 PM",
+        "Friday": "7:30 AM - 5:30 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free early education for children ages 3-5 from low-income families"
+    },
+    {
+      "name": "Senior Tech Help Desk",
+      "address": "279 S 600 W, Salt Lake City, UT 84101",
+      "latitude": 40.7579,
+      "longitude": -111.9026,
+      "reviews": [],
+      "place_id": "ChIJ_seniortech01",
+      "types": [
+        "Community Service",
+        "Senior Services",
+        "Technology Help"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 144,
+      "price_level": 0,
+      "website": "https://www.slc.gov/senior-services",
+      "contact_number": "(801) 535-6550",
+      "opening_hours": {
+        "Monday": "10:00 AM - 12:00 PM",
+        "Wednesday": "10:00 AM - 12:00 PM",
+        "Tuesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free device help for seniors 60+"
+    },
+    {
+      "name": "Meals on Wheels Salt Lake",
+      "address": "730 S 300 E, Salt Lake City, UT 84111",
+      "latitude": 40.7524,
+      "longitude": -111.8826,
+      "reviews": [],
+      "place_id": "ChIJ_mealsonwheels01",
+      "types": [
+        "Non-Profit",
+        "Senior Services",
+        "Food & Nutrition",
+        "Meal Delivery"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 389,
+      "price_level": 0,
+      "website": "https://www.saltlakecountyaging.org",
+      "contact_number": "(385) 468-3280",
+      "opening_hours": {
+        "Monday": "8:00 AM - 4:30 PM",
+        "Tuesday": "8:00 AM - 4:30 PM",
+        "Wednesday": "8:00 AM - 4:30 PM",
+        "Thursday": "8:00 AM - 4:30 PM",
+        "Friday": "8:00 AM - 4:30 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free or reduced-cost meal delivery for homebound seniors"
+    },
+    {
+      "name": "Senior Social & Bingo Day",
+      "address": "346 W 200 N, Salt Lake City, UT 84103",
+      "latitude": 40.7692,
+      "longitude": -111.8985,
+      "reviews": [],
+      "place_id": "ChIJ_seniorbingo01",
+      "types": [
+        "Community Event",
+        "Senior Services",
+        "Social Activity"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 112,
+      "price_level": 0,
+      "website": "https://www.saltlakecountyaging.org",
+      "contact_number": "(385) 468-3280",
+      "opening_hours": {
+        "Monday": "1:00 PM - 4:00 PM",
+        "Wednesday": "1:00 PM - 4:00 PM",
+        "Friday": "1:00 PM - 4:00 PM",
+        "Tuesday": "Closed",
+        "Thursday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Transportation assistance available upon request"
+    },
+    {
+      "name": "Salt Lake County Aging Services",
+      "address": "2001 S State St, Salt Lake City, UT 84190",
+      "latitude": 40.7264,
+      "longitude": -111.8879,
+      "reviews": [],
+      "place_id": "ChIJ_agingservices01",
+      "types": [
+        "Community Service",
+        "Senior Services",
+        "Case Management"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 210,
+      "price_level": 0,
+      "website": "https://www.saltlakecountyaging.org",
+      "contact_number": "(385) 468-3280",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "In-home care, transportation, and legal aid for seniors"
+    },
+    {
+      "name": "AARP Utah Free Tax Prep",
+      "address": "440 E 400 S, Salt Lake City, UT 84111",
+      "latitude": 40.757,
+      "longitude": -111.8818,
+      "reviews": [],
+      "place_id": "ChIJ_aarptax01",
+      "types": [
+        "Community Service",
+        "Senior Services",
+        "Financial Assistance",
+        "Tax Help"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 177,
+      "price_level": 0,
+      "website": "https://www.aarp.org/utah",
+      "contact_number": "1-888-687-2277",
+      "opening_hours": {
+        "Tuesday": "10:00 AM - 2:00 PM",
+        "Thursday": "10:00 AM - 2:00 PM",
+        "Monday": "Closed",
+        "Wednesday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free tax preparation for seniors and low-income residents"
+    },
+    {
+      "name": "Senior Transportation Assistance",
+      "address": "2001 S State St, Salt Lake City, UT 84190",
+      "latitude": 40.7264,
+      "longitude": -111.8879,
+      "reviews": [],
+      "place_id": "ChIJ_seniortransport01",
+      "types": [
+        "Support Program",
+        "Senior Services",
+        "Transportation"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 167,
+      "price_level": 0,
+      "website": "https://www.saltlakecountyaging.org",
+      "contact_number": "(385) 468-3280",
+      "opening_hours": {
+        "Monday": "8:00 AM - 4:30 PM",
+        "Tuesday": "8:00 AM - 4:30 PM",
+        "Wednesday": "8:00 AM - 4:30 PM",
+        "Thursday": "8:00 AM - 4:30 PM",
+        "Friday": "8:00 AM - 4:30 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free rides to medical appointments for seniors 60+"
+    },
+    {
+      "name": "Free ESL Classes for Adults",
+      "address": "1570 W 400 N, Salt Lake City, UT 84116",
+      "latitude": 40.773,
+      "longitude": -111.9198,
+      "reviews": [],
+      "place_id": "ChIJ_eslclasses01",
+      "types": [
+        "Support Program",
+        "Education",
+        "Language Learning"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 233,
+      "price_level": 0,
+      "website": "https://www.rescue.org/united-states/salt-lake-city-ut",
+      "contact_number": "(801) 328-1091",
+      "opening_hours": {
+        "Tuesday": "6:00 PM - 8:00 PM",
+        "Thursday": "6:00 PM - 8:00 PM",
+        "Monday": "Closed",
+        "Wednesday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free English classes for all skill levels. Childcare available."
+    },
+    {
+      "name": "Free Resume & Job Search Workshop",
+      "address": "720 S 200 E, Salt Lake City, UT 84111",
+      "latitude": 40.753,
+      "longitude": -111.8872,
+      "reviews": [],
+      "place_id": "ChIJ_resumeworkshop01",
+      "types": [
+        "Community Event",
+        "Education",
+        "Workforce Development"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 198,
+      "price_level": 0,
+      "website": "https://jobs.utah.gov",
+      "contact_number": "(801) 526-9675",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free one-on-one career coaching and job placement assistance"
+    },
+    {
+      "name": "Free Financial Literacy Workshop",
+      "address": "210 E 400 S, Salt Lake City, UT 84111",
+      "latitude": 40.7596,
+      "longitude": -111.886,
+      "reviews": [],
+      "place_id": "ChIJ_finliteracy01",
+      "types": [
+        "Community Event",
+        "Education",
+        "Financial Literacy"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 154,
+      "price_level": 0,
+      "website": "https://www.slcpl.org",
+      "contact_number": "(801) 524-8200",
+      "opening_hours": {
+        "Saturday": "10:00 AM - 12:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free budgeting and credit-building workshop. No registration required."
+    },
+    {
+      "name": "Salt Lake Community College Workforce Training",
+      "address": "4600 S Redwood Rd, Salt Lake City, UT 84123",
+      "latitude": 40.6965,
+      "longitude": -111.9337,
+      "reviews": [],
+      "place_id": "ChIJ_slccworkforce01",
+      "types": [
+        "Support Program",
+        "Education",
+        "Workforce Development",
+        "Job Training"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 421,
+      "price_level": 1,
+      "website": "https://www.slcc.edu",
+      "contact_number": "(801) 957-4111",
+      "opening_hours": {
+        "Monday": "7:00 AM - 9:00 PM",
+        "Tuesday": "7:00 AM - 9:00 PM",
+        "Wednesday": "7:00 AM - 9:00 PM",
+        "Thursday": "7:00 AM - 9:00 PM",
+        "Friday": "7:00 AM - 5:00 PM",
+        "Saturday": "8:00 AM - 2:00 PM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Low-cost certifications and workforce training. Financial aid available."
+    },
+    {
+      "name": "Adult Education GED Program",
+      "address": "440 W 200 S, Salt Lake City, UT 84101",
+      "latitude": 40.7599,
+      "longitude": -111.8996,
+      "reviews": [],
+      "place_id": "ChIJ_gedprogram01",
+      "types": [
+        "Support Program",
+        "Education",
+        "GED"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 167,
+      "price_level": 0,
+      "website": "https://www.granite.k12.ut.us/adulted",
+      "contact_number": "(385) 646-4560",
+      "opening_hours": {
+        "Monday": "8:00 AM - 7:00 PM",
+        "Tuesday": "8:00 AM - 7:00 PM",
+        "Wednesday": "8:00 AM - 7:00 PM",
+        "Thursday": "8:00 AM - 7:00 PM",
+        "Friday": "8:00 AM - 4:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free GED prep classes and testing fee assistance"
+    },
+    {
+      "name": "Granite Education Foundation Tutoring",
+      "address": "2500 S State St, Salt Lake City, UT 84115",
+      "latitude": 40.7221,
+      "longitude": -111.8882,
+      "reviews": [],
+      "place_id": "ChIJ_granitetutoring01",
+      "types": [
+        "Support Program",
+        "Education",
+        "Tutoring",
+        "Youth Programs"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 188,
+      "price_level": 0,
+      "website": "https://www.graniteeducation.org",
+      "contact_number": "(385) 646-4000",
+      "opening_hours": {
+        "Monday": "3:00 PM - 6:00 PM",
+        "Tuesday": "3:00 PM - 6:00 PM",
+        "Wednesday": "3:00 PM - 6:00 PM",
+        "Thursday": "3:00 PM - 6:00 PM",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free after-school tutoring in math, reading, and science for K-12"
+    },
+    {
+      "name": "Utah Small Business Development Center",
+      "address": "9750 S 300 W, Sandy, UT 84070",
+      "latitude": 40.5727,
+      "longitude": -111.8935,
+      "reviews": [],
+      "place_id": "ChIJ_utahsbdc01",
+      "types": [
+        "Support Program",
+        "Education",
+        "Small Business"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 189,
+      "price_level": 0,
+      "website": "https://www.utahsbdc.org",
+      "contact_number": "(801) 957-3480",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free business consulting and low-cost training for entrepreneurs"
+    },
+    {
+      "name": "SLC Public Library Free Programs",
+      "address": "210 E 400 S, Salt Lake City, UT 84111",
+      "latitude": 40.7596,
+      "longitude": -111.886,
+      "reviews": [],
+      "place_id": "ChIJ_slclib01",
+      "types": [
+        "Community Service",
+        "Education",
+        "Arts & Culture",
+        "Technology Help"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 1243,
+      "price_level": 0,
+      "website": "https://www.slcpl.org",
+      "contact_number": "(801) 524-8200",
+      "opening_hours": {
+        "Monday": "9:00 AM - 9:00 PM",
+        "Tuesday": "9:00 AM - 9:00 PM",
+        "Wednesday": "9:00 AM - 9:00 PM",
+        "Thursday": "9:00 AM - 9:00 PM",
+        "Friday": "9:00 AM - 6:00 PM",
+        "Saturday": "9:00 AM - 6:00 PM",
+        "Sunday": "1:00 PM - 5:00 PM"
+      },
+      "photos": null,
+      "special_offers": "Free programs including story time, tech help, book clubs, and maker space"
+    },
+    {
+      "name": "Jordan River Cleanup Day",
+      "address": "1700 S Redwood Rd, Salt Lake City, UT 84104",
+      "latitude": 40.7365,
+      "longitude": -111.934,
+      "reviews": [],
+      "place_id": "ChIJ_jordancleanup01",
+      "types": [
+        "Community Event",
+        "Environment",
+        "Volunteer",
+        "Cleanup"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 302,
+      "price_level": 0,
+      "website": "https://www.jordanrivercommission.com",
+      "contact_number": "(801) 533-4041",
+      "opening_hours": {
+        "Saturday": "8:00 AM - 11:00 AM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Gloves and bags provided. Volunteer hours logged for students."
+    },
+    {
+      "name": "Wasatch Front Trail Restoration",
+      "address": "1600 E Bonneville Blvd, Salt Lake City, UT 84108",
+      "latitude": 40.7609,
+      "longitude": -111.8389,
+      "reviews": [],
+      "place_id": "ChIJ_wasatchtrail01",
+      "types": [
+        "Community Event",
+        "Environment",
+        "Volunteer",
+        "Trails"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 278,
+      "price_level": 0,
+      "website": "https://www.wasatchtrailfoundation.org",
+      "contact_number": "(801) 463-6198",
+      "opening_hours": {
+        "Saturday": "7:30 AM - 11:00 AM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Tools and snacks provided. Great for families and groups."
+    },
+    {
+      "name": "SLC Community Garden Program",
+      "address": "1060 S 900 W, Salt Lake City, UT 84104",
+      "latitude": 40.7484,
+      "longitude": -111.9118,
+      "reviews": [],
+      "place_id": "ChIJ_commgarden01",
+      "types": [
+        "Community Service",
+        "Environment",
+        "Food & Nutrition",
+        "Gardening"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 134,
+      "price_level": 0,
+      "website": "https://www.slc.gov/parks",
+      "contact_number": "(801) 972-7800",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Low-cost garden plots available to residents. Seeds and tools provided."
+    },
+    {
+      "name": "Recycling Drop-Off & Education Day",
+      "address": "500 N 4800 W, Salt Lake City, UT 84116",
+      "latitude": 40.7821,
+      "longitude": -111.9722,
+      "reviews": [],
+      "place_id": "ChIJ_recyclingday01",
+      "types": [
+        "Community Event",
+        "Environment",
+        "Recycling"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 189,
+      "price_level": 0,
+      "website": "https://www.slcgreen.com",
+      "contact_number": "(801) 535-6999",
+      "opening_hours": {
+        "Saturday": "8:00 AM - 2:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free drop-off of electronics, hazardous waste, and recyclables"
+    },
+    {
+      "name": "Tree Planting Initiative",
+      "address": "451 S State St, Salt Lake City, UT 84111",
+      "latitude": 40.756,
+      "longitude": -111.8882,
+      "reviews": [],
+      "place_id": "ChIJ_treeplanting01",
+      "types": [
+        "Community Event",
+        "Environment",
+        "Volunteer",
+        "Urban Forestry"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 211,
+      "price_level": 0,
+      "website": "https://www.treeutah.org",
+      "contact_number": "(801) 359-8733",
+      "opening_hours": {
+        "Saturday": "9:00 AM - 12:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free trees available for SLC residents through the urban forestry program"
+    },
+    {
+      "name": "Wasatch Community Gardens",
+      "address": "850 E 900 S, Salt Lake City, UT 84105",
+      "latitude": 40.7443,
+      "longitude": -111.8702,
+      "reviews": [],
+      "place_id": "ChIJ_wasatchgarden01",
+      "types": [
+        "Non-Profit",
+        "Environment",
+        "Food & Nutrition",
+        "Gardening"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 234,
+      "price_level": 0,
+      "website": "https://www.wasatchgardens.org",
+      "contact_number": "(801) 359-2658",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Low-cost garden plots and free gardening workshops"
+    },
+    {
+      "name": "Rose Park Neighborhood Council Meeting",
+      "address": "1375 W 1000 N, Salt Lake City, UT 84116",
+      "latitude": 40.7839,
+      "longitude": -111.9205,
+      "reviews": [],
+      "place_id": "ChIJ_rosepark01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Council Meeting"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 88,
+      "price_level": 0,
+      "website": "https://www.slc.gov/boards/rose-park",
+      "contact_number": "(801) 535-6310",
+      "opening_hours": {
+        "Wednesday": "6:30 PM - 8:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": null
+    },
+    {
+      "name": "Sugar House Community Council Meeting",
+      "address": "2230 S 900 E, Salt Lake City, UT 84106",
+      "latitude": 40.7197,
+      "longitude": -111.8651,
+      "reviews": [],
+      "place_id": "ChIJ_sugarhouse01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Council Meeting"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 102,
+      "price_level": 0,
+      "website": "https://www.sugarhousecouncil.org",
+      "contact_number": "(801) 467-4014",
+      "opening_hours": {
+        "Thursday": "7:00 PM - 8:30 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": null
+    },
+    {
+      "name": "National Night Out Against Crime",
+      "address": "Various Neighborhood Locations, Salt Lake City, UT",
+      "latitude": 40.7608,
+      "longitude": -111.891,
+      "reviews": [],
+      "place_id": "ChIJ_nno01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Safety",
+        "Annual Event"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 345,
+      "price_level": 0,
+      "website": "https://www.slcpd.com",
+      "contact_number": "(801) 799-3000",
+      "opening_hours": {
+        "Tuesday": "6:00 PM - 9:00 PM",
+        "Monday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Annual event held first Tuesday of August. Free food, games, and prizes."
+    },
+    {
+      "name": "SLC Adopt-a-Block Volunteer Day",
+      "address": "451 S State St, Salt Lake City, UT 84111",
+      "latitude": 40.756,
+      "longitude": -111.8882,
+      "reviews": [],
+      "place_id": "ChIJ_adoptablock01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Volunteer"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 178,
+      "price_level": 0,
+      "website": "https://www.slc.gov/volunteer",
+      "contact_number": "(801) 535-6310",
+      "opening_hours": {
+        "Saturday": "9:00 AM - 12:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Supplies provided. Great for individuals, families, and groups."
+    },
+    {
+      "name": "Neighborhood Beautification Day",
+      "address": "451 S State St, Salt Lake City, UT 84111",
+      "latitude": 40.756,
+      "longitude": -111.8882,
+      "reviews": [],
+      "place_id": "ChIJ_beautification01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Volunteer"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 144,
+      "price_level": 0,
+      "website": "https://www.slc.gov/volunteer",
+      "contact_number": "(801) 535-6310",
+      "opening_hours": {
+        "Saturday": "8:00 AM - 12:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "All supplies provided. Volunteer hours certified for school/work."
+    },
+    {
+      "name": "Utah Legal Services",
+      "address": "205 N 400 W, Salt Lake City, UT 84103",
+      "latitude": 40.7699,
+      "longitude": -111.899,
+      "reviews": [],
+      "place_id": "ChIJ_utahlegal01",
+      "types": [
+        "Non-Profit",
+        "Legal Aid",
+        "Civil Law"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 312,
+      "price_level": 0,
+      "website": "https://www.utahlegalservices.org",
+      "contact_number": "(801) 328-8891",
+      "opening_hours": {
+        "Monday": "8:30 AM - 5:00 PM",
+        "Tuesday": "8:30 AM - 5:00 PM",
+        "Wednesday": "8:30 AM - 5:00 PM",
+        "Thursday": "8:30 AM - 5:00 PM",
+        "Friday": "8:30 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free civil legal help for low-income Utahns"
+    },
+    {
+      "name": "Community Action Program of Utah",
+      "address": "764 S 200 W, Salt Lake City, UT 84101",
+      "latitude": 40.7524,
+      "longitude": -111.8921,
+      "reviews": [],
+      "place_id": "ChIJ_caputah01",
+      "types": [
+        "Non-Profit",
+        "Financial Assistance",
+        "Utility Assistance"
+      ],
+      "rating": 4.3,
+      "user_ratings_total": 199,
+      "price_level": 0,
+      "website": "https://www.caputah.org",
+      "contact_number": "(801) 359-2444",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Energy assistance, weatherization, and Head Start programs"
+    },
+    {
+      "name": "Salt Lake County Financial Assistance Office",
+      "address": "2001 S State St S2-400, Salt Lake City, UT 84190",
+      "latitude": 40.7264,
+      "longitude": -111.8879,
+      "reviews": [],
+      "place_id": "ChIJ_financial01",
+      "types": [
+        "Community Service",
+        "Financial Assistance",
+        "Emergency Aid"
+      ],
+      "rating": 3.9,
+      "user_ratings_total": 245,
+      "price_level": 0,
+      "website": "https://www.saltlakecounty.gov",
+      "contact_number": "(385) 468-4500",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Emergency financial assistance for utility bills, rent, and food"
+    },
+    {
+      "name": "International Rescue Committee Utah",
+      "address": "173 W 200 S, Salt Lake City, UT 84101",
+      "latitude": 40.7601,
+      "longitude": -111.8953,
+      "reviews": [],
+      "place_id": "ChIJ_irc01",
+      "types": [
+        "Non-Profit",
+        "Immigrant & Refugee Services",
+        "Resettlement"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 378,
+      "price_level": 0,
+      "website": "https://www.rescue.org/united-states/salt-lake-city-ut",
+      "contact_number": "(801) 328-1091",
+      "opening_hours": {
+        "Monday": "9:00 AM - 5:00 PM",
+        "Tuesday": "9:00 AM - 5:00 PM",
+        "Wednesday": "9:00 AM - 5:00 PM",
+        "Thursday": "9:00 AM - 5:00 PM",
+        "Friday": "9:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Resettlement services, job placement, ESL, and legal support for refugees"
+    },
+    {
+      "name": "Catholic Community Services Immigration",
+      "address": "745 E 300 S, Salt Lake City, UT 84102",
+      "latitude": 40.7586,
+      "longitude": -111.8748,
+      "reviews": [],
+      "place_id": "ChIJ_ccs01",
+      "types": [
+        "Non-Profit",
+        "Immigrant & Refugee Services",
+        "Legal Aid"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 221,
+      "price_level": 0,
+      "website": "https://www.ccsutah.org",
+      "contact_number": "(801) 977-9119",
+      "opening_hours": {
+        "Monday": "8:30 AM - 5:00 PM",
+        "Tuesday": "8:30 AM - 5:00 PM",
+        "Wednesday": "8:30 AM - 5:00 PM",
+        "Thursday": "8:30 AM - 5:00 PM",
+        "Friday": "8:30 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Low-cost immigration legal services and naturalization assistance"
+    },
+    {
+      "name": "Multicultural Community Fair",
+      "address": "751 W 900 S, Salt Lake City, UT 84104",
+      "latitude": 40.7488,
+      "longitude": -111.9097,
+      "reviews": [],
+      "place_id": "ChIJ_multicultural01",
+      "types": [
+        "Community Event",
+        "Immigrant & Refugee Services",
+        "Arts & Culture"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 489,
+      "price_level": 0,
+      "website": null,
+      "contact_number": "(801) 535-7743",
+      "opening_hours": {
+        "Saturday": "11:00 AM - 6:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free entry. Food, performances, and activities celebrating SLC's diverse communities"
+    },
+    {
+      "name": "Utah Independent Living Center",
+      "address": "3445 S Main St, Salt Lake City, UT 84115",
+      "latitude": 40.7036,
+      "longitude": -111.8903,
+      "reviews": [],
+      "place_id": "ChIJ_uilc01",
+      "types": [
+        "Non-Profit",
+        "Disability Services",
+        "Independent Living"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 167,
+      "price_level": 0,
+      "website": "https://www.uilc.org",
+      "contact_number": "(801) 466-5565",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Personal care, housing, and employment support for people with disabilities"
+    },
+    {
+      "name": "Disability Law Center Utah",
+      "address": "205 N 400 W, Salt Lake City, UT 84103",
+      "latitude": 40.7699,
+      "longitude": -111.899,
+      "reviews": [],
+      "place_id": "ChIJ_dlcutah01",
+      "types": [
+        "Non-Profit",
+        "Disability Services",
+        "Legal Aid"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 143,
+      "price_level": 0,
+      "website": "https://www.disabilitylawcenter.org",
+      "contact_number": "(801) 363-1347",
+      "opening_hours": {
+        "Monday": "9:00 AM - 5:00 PM",
+        "Tuesday": "9:00 AM - 5:00 PM",
+        "Wednesday": "9:00 AM - 5:00 PM",
+        "Thursday": "9:00 AM - 5:00 PM",
+        "Friday": "9:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free legal advocacy for people with disabilities"
+    },
+    {
+      "name": "Alcoholics Anonymous Salt Lake Intergroup",
+      "address": "1180 E 4800 S, Millcreek, UT 84117",
+      "latitude": 40.6895,
+      "longitude": -111.8626,
+      "reviews": [],
+      "place_id": "ChIJ_aaslc01",
+      "types": [
+        "Support Program",
+        "Substance Use Recovery",
+        "Peer Support"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 312,
+      "price_level": 0,
+      "website": "https://www.saltlakeaa.org",
+      "contact_number": "(801) 484-7871",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Free AA meetings held throughout Salt Lake County daily"
+    },
+    {
+      "name": "Valley Behavioral Health Recovery Center",
+      "address": "4535 S 700 E, Murray, UT 84107",
+      "latitude": 40.6914,
+      "longitude": -111.8815,
+      "reviews": [],
+      "place_id": "ChIJ_valleybh01",
+      "types": [
+        "Support Program",
+        "Substance Use Recovery",
+        "Mental Health",
+        "Counseling"
+      ],
+      "rating": 4.2,
+      "user_ratings_total": 198,
+      "price_level": 1,
+      "website": "https://www.valleybehavioralhealth.org",
+      "contact_number": "(801) 984-9100",
+      "opening_hours": {
+        "Monday": "8:00 AM - 8:00 PM",
+        "Tuesday": "8:00 AM - 8:00 PM",
+        "Wednesday": "8:00 AM - 8:00 PM",
+        "Thursday": "8:00 AM - 8:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Sliding scale fees. Medicaid accepted."
+    },
+    {
+      "name": "VA Salt Lake City Health Care System",
+      "address": "500 Foothill Dr, Salt Lake City, UT 84148",
+      "latitude": 40.7686,
+      "longitude": -111.8235,
+      "reviews": [],
+      "place_id": "ChIJ_vaslc01",
+      "types": [
+        "Community Service",
+        "Veterans Services",
+        "Health & Wellness"
+      ],
+      "rating": 3.8,
+      "user_ratings_total": 412,
+      "price_level": 0,
+      "website": "https://www.saltlakecity.va.gov",
+      "contact_number": "(801) 582-1565",
+      "opening_hours": {
+        "Monday": "7:00 AM - 4:30 PM",
+        "Tuesday": "7:00 AM - 4:30 PM",
+        "Wednesday": "7:00 AM - 4:30 PM",
+        "Thursday": "7:00 AM - 4:30 PM",
+        "Friday": "7:00 AM - 4:30 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free healthcare services for eligible veterans"
+    },
+    {
+      "name": "Utah Veterans Legal Clinic",
+      "address": "423 W 800 S, Salt Lake City, UT 84101",
+      "latitude": 40.751,
+      "longitude": -111.8997,
+      "reviews": [],
+      "place_id": "ChIJ_vetlegal01",
+      "types": [
+        "Community Service",
+        "Veterans Services",
+        "Legal Aid"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 134,
+      "price_level": 0,
+      "website": "https://www.utahbar.org/veterans",
+      "contact_number": "(801) 531-9077",
+      "opening_hours": {
+        "Wednesday": "12:00 PM - 4:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free legal consultations for veterans and their families"
+    },
+    {
+      "name": "Utah Pride Center",
+      "address": "255 E 400 S, Salt Lake City, UT 84111",
+      "latitude": 40.7584,
+      "longitude": -111.883,
+      "reviews": [],
+      "place_id": "ChIJ_utahpride01",
+      "types": [
+        "Non-Profit",
+        "LGBTQ+ Services",
+        "Counseling",
+        "Community Event"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 467,
+      "price_level": 0,
+      "website": "https://www.utahpridecenter.org",
+      "contact_number": "(801) 539-8800",
+      "opening_hours": {
+        "Monday": "9:00 AM - 8:00 PM",
+        "Tuesday": "9:00 AM - 8:00 PM",
+        "Wednesday": "9:00 AM - 8:00 PM",
+        "Thursday": "9:00 AM - 8:00 PM",
+        "Friday": "9:00 AM - 6:00 PM",
+        "Saturday": "10:00 AM - 4:00 PM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free counseling, support groups, and community programs for LGBTQ+ individuals"
+    },
+    {
+      "name": "Encircle LGBTQ+ Youth Resource Center",
+      "address": "331 S 600 E, Salt Lake City, UT 84102",
+      "latitude": 40.7573,
+      "longitude": -111.8723,
+      "reviews": [],
+      "place_id": "ChIJ_encircle01",
+      "types": [
+        "Non-Profit",
+        "LGBTQ+ Services",
+        "Youth Programs",
+        "Mental Health"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 534,
+      "price_level": 0,
+      "website": "https://www.encircletogether.org",
+      "contact_number": "(385) 275-0759",
+      "opening_hours": {
+        "Monday": "3:00 PM - 9:00 PM",
+        "Tuesday": "3:00 PM - 9:00 PM",
+        "Wednesday": "3:00 PM - 9:00 PM",
+        "Thursday": "3:00 PM - 9:00 PM",
+        "Friday": "3:00 PM - 9:00 PM",
+        "Saturday": "12:00 PM - 6:00 PM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free family and individual therapy and safe space for LGBTQ+ youth"
+    },
+    {
+      "name": "Utah Child Care Assistance Program",
+      "address": "195 N 1950 W, Salt Lake City, UT 84116",
+      "latitude": 40.7756,
+      "longitude": -111.928,
+      "reviews": [],
+      "place_id": "ChIJ_childcare01",
+      "types": [
+        "Support Program",
+        "Childcare & Family",
+        "Financial Assistance"
+      ],
+      "rating": 4.0,
+      "user_ratings_total": 177,
+      "price_level": 0,
+      "website": "https://jobs.utah.gov/occ",
+      "contact_number": "(801) 526-4350",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Subsidized childcare for low-income working families"
+    },
+    {
+      "name": "Family Support Center",
+      "address": "2550 Washington Blvd, Ogden, UT 84401",
+      "latitude": 41.2197,
+      "longitude": -111.9687,
+      "reviews": [],
+      "place_id": "ChIJ_familysupport01",
+      "types": [
+        "Non-Profit",
+        "Childcare & Family",
+        "Crisis Support"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 189,
+      "price_level": 0,
+      "website": "https://www.familysupportcenter.org",
+      "contact_number": "(801) 394-9456",
+      "opening_hours": {
+        "Monday": "8:00 AM - 6:00 PM",
+        "Tuesday": "8:00 AM - 6:00 PM",
+        "Wednesday": "8:00 AM - 6:00 PM",
+        "Thursday": "8:00 AM - 6:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Parenting classes, crisis nursery, and respite care"
+    },
+    {
+      "name": "Community Diaper Bank of Utah",
+      "address": "975 S 300 W, Salt Lake City, UT 84101",
+      "latitude": 40.7499,
+      "longitude": -111.896,
+      "reviews": [],
+      "place_id": "ChIJ_diaperbank01",
+      "types": [
+        "Non-Profit",
+        "Childcare & Family",
+        "Donation"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 201,
+      "price_level": 0,
+      "website": "https://www.utahdiaperbank.org",
+      "contact_number": "(801) 364-7765",
+      "opening_hours": {
+        "Monday": "9:00 AM - 12:00 PM",
+        "Wednesday": "9:00 AM - 12:00 PM",
+        "Friday": "9:00 AM - 12:00 PM",
+        "Tuesday": "Closed",
+        "Thursday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free diapers and baby supplies for low-income families"
+    },
+    {
+      "name": "Utah Arts Alliance Community Programs",
+      "address": "127 W Pierpont Ave, Salt Lake City, UT 84101",
+      "latitude": 40.7573,
+      "longitude": -111.8937,
+      "reviews": [],
+      "place_id": "ChIJ_utaharts01",
+      "types": [
+        "Non-Profit",
+        "Arts & Culture",
+        "Free Classes"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 289,
+      "price_level": 0,
+      "website": "https://www.utahartsalliance.org",
+      "contact_number": "(801) 321-5000",
+      "opening_hours": {
+        "Monday": "9:00 AM - 6:00 PM",
+        "Tuesday": "9:00 AM - 6:00 PM",
+        "Wednesday": "9:00 AM - 6:00 PM",
+        "Thursday": "9:00 AM - 6:00 PM",
+        "Friday": "9:00 AM - 6:00 PM",
+        "Saturday": "10:00 AM - 4:00 PM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free art classes and cultural programming for all ages"
+    },
+    {
+      "name": "Liberty Park Free Summer Concerts",
+      "address": "600 E 900 S, Salt Lake City, UT 84105",
+      "latitude": 40.7442,
+      "longitude": -111.8738,
+      "reviews": [],
+      "place_id": "ChIJ_libertyconcerts01",
+      "types": [
+        "Community Event",
+        "Arts & Culture",
+        "Music"
+      ],
+      "rating": 4.9,
+      "user_ratings_total": 678,
+      "price_level": 0,
+      "website": "https://www.slc.gov/parks",
+      "contact_number": "(801) 972-7800",
+      "opening_hours": {
+        "Thursday": "7:00 PM - 9:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free outdoor concerts every Thursday evening in summer"
+    },
+    {
+      "name": "Utah Museum of Fine Arts Community Day",
+      "address": "410 Campus Center Dr, Salt Lake City, UT 84112",
+      "latitude": 40.7641,
+      "longitude": -111.8485,
+      "reviews": [],
+      "place_id": "ChIJ_umfa01",
+      "types": [
+        "Community Event",
+        "Arts & Culture",
+        "Museum"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 567,
+      "price_level": 0,
+      "website": "https://www.umfa.utah.edu",
+      "contact_number": "(801) 581-7332",
+      "opening_hours": {
+        "Monday": "Closed",
+        "Tuesday": "10:00 AM - 5:00 PM",
+        "Wednesday": "10:00 AM - 8:00 PM",
+        "Thursday": "10:00 AM - 5:00 PM",
+        "Friday": "10:00 AM - 5:00 PM",
+        "Saturday": "10:00 AM - 5:00 PM",
+        "Sunday": "11:00 AM - 5:00 PM"
+      },
+      "photos": null,
+      "special_offers": "Free first Wednesday of every month for all visitors"
+    },
+    {
+      "name": "SLC Cultural Celebration Festival",
+      "address": "200 W 400 S, Salt Lake City, UT 84101",
+      "latitude": 40.7588,
+      "longitude": -111.8971,
+      "reviews": [],
+      "place_id": "ChIJ_cultfest01",
+      "types": [
+        "Community Event",
+        "Arts & Culture",
+        "Annual Festival"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 521,
+      "price_level": 0,
+      "website": "https://www.slc.gov/mayor/community",
+      "contact_number": "(801) 535-7743",
+      "opening_hours": {
+        "Saturday": "12:00 PM - 8:00 PM",
+        "Sunday": "12:00 PM - 6:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free entry. Annual celebration of Salt Lake City's cultural diversity."
+    },
+    {
+      "name": "Northwest Recreation Center",
+      "address": "1255 W 300 N, Salt Lake City, UT 84116",
+      "latitude": 40.7714,
+      "longitude": -111.9178,
+      "reviews": [],
+      "place_id": "ChIJ_nwrec01",
+      "types": [
+        "Community Service",
+        "Sports & Recreation",
+        "Fitness"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 421,
+      "price_level": 1,
+      "website": "https://www.slc.gov/parks",
+      "contact_number": "(801) 972-7800",
+      "opening_hours": {
+        "Monday": "6:00 AM - 10:00 PM",
+        "Tuesday": "6:00 AM - 10:00 PM",
+        "Wednesday": "6:00 AM - 10:00 PM",
+        "Thursday": "6:00 AM - 10:00 PM",
+        "Friday": "6:00 AM - 9:00 PM",
+        "Saturday": "8:00 AM - 6:00 PM",
+        "Sunday": "10:00 AM - 6:00 PM"
+      },
+      "photos": null,
+      "special_offers": "Fee assistance program available for low-income residents"
+    },
+    {
+      "name": "SLC Parks & Recreation Free Swim Days",
+      "address": "1770 E 3300 S, Salt Lake City, UT 84106",
+      "latitude": 40.7113,
+      "longitude": -111.8457,
+      "reviews": [],
+      "place_id": "ChIJ_freeswim01",
+      "types": [
+        "Community Event",
+        "Sports & Recreation",
+        "Youth Programs"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 345,
+      "price_level": 0,
+      "website": "https://www.slc.gov/parks",
+      "contact_number": "(801) 972-7800",
+      "opening_hours": {
+        "Monday": "6:00 AM - 9:00 PM",
+        "Tuesday": "6:00 AM - 9:00 PM",
+        "Wednesday": "6:00 AM - 9:00 PM",
+        "Thursday": "6:00 AM - 9:00 PM",
+        "Friday": "6:00 AM - 9:00 PM",
+        "Saturday": "8:00 AM - 6:00 PM",
+        "Sunday": "10:00 AM - 6:00 PM"
+      },
+      "photos": null,
+      "special_offers": "Free swim days the first Monday of every month"
+    },
+    {
+      "name": "Salt Lake County Animal Services",
+      "address": "511 W 3900 S, Murray, UT 84123",
+      "latitude": 40.7019,
+      "longitude": -111.9018,
+      "reviews": [],
+      "place_id": "ChIJ_slcanimal01",
+      "types": [
+        "Community Service",
+        "Animal Services",
+        "Shelter"
+      ],
+      "rating": 4.3,
+      "user_ratings_total": 678,
+      "price_level": 1,
+      "website": "https://www.slcounty.org/animal",
+      "contact_number": "(385) 468-7387",
+      "opening_hours": {
+        "Monday": "11:00 AM - 6:00 PM",
+        "Tuesday": "11:00 AM - 6:00 PM",
+        "Wednesday": "11:00 AM - 6:00 PM",
+        "Thursday": "11:00 AM - 6:00 PM",
+        "Friday": "11:00 AM - 6:00 PM",
+        "Saturday": "11:00 AM - 6:00 PM",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Low-cost spay/neuter clinics and pet food bank for low-income households"
+    },
+    {
+      "name": "Best Friends Animal Society Utah",
+      "address": "2005 S 1100 E, Salt Lake City, UT 84106",
+      "latitude": 40.723,
+      "longitude": -111.8647,
+      "reviews": [],
+      "place_id": "ChIJ_bestfriends01",
+      "types": [
+        "Non-Profit",
+        "Animal Services",
+        "Volunteer"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 889,
+      "price_level": 0,
+      "website": "https://www.bestfriends.org/utah",
+      "contact_number": "(801) 474-3331",
+      "opening_hours": {
+        "Monday": "12:00 PM - 7:00 PM",
+        "Tuesday": "12:00 PM - 7:00 PM",
+        "Wednesday": "12:00 PM - 7:00 PM",
+        "Thursday": "12:00 PM - 7:00 PM",
+        "Friday": "12:00 PM - 7:00 PM",
+        "Saturday": "10:00 AM - 6:00 PM",
+        "Sunday": "10:00 AM - 6:00 PM"
+      },
+      "photos": null,
+      "special_offers": "Volunteer opportunities and low-cost adoption events"
+    },
+    {
+      "name": "Utah HEAT Program",
+      "address": "195 N 1950 W, Salt Lake City, UT 84116",
+      "latitude": 40.7756,
+      "longitude": -111.928,
+      "reviews": [],
+      "place_id": "ChIJ_heat01",
+      "types": [
+        "Support Program",
+        "Utility Assistance",
+        "Financial Assistance"
+      ],
+      "rating": 4.2,
+      "user_ratings_total": 212,
+      "price_level": 0,
+      "website": "https://jobs.utah.gov/housing/heatprogram",
+      "contact_number": "(801) 526-9675",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free heating bill assistance for low-income households"
+    },
+    {
+      "name": "Rocky Mountain Power Bill Assistance",
+      "address": "1407 W North Temple, Salt Lake City, UT 84116",
+      "latitude": 40.777,
+      "longitude": -111.9199,
+      "reviews": [],
+      "place_id": "ChIJ_rmppower01",
+      "types": [
+        "Support Program",
+        "Utility Assistance",
+        "Electric Bill Help"
+      ],
+      "rating": 3.6,
+      "user_ratings_total": 344,
+      "price_level": 0,
+      "website": "https://www.rockymountainpower.net",
+      "contact_number": "1-888-221-7070",
+      "opening_hours": {
+        "Monday": "7:00 AM - 7:00 PM",
+        "Tuesday": "7:00 AM - 7:00 PM",
+        "Wednesday": "7:00 AM - 7:00 PM",
+        "Thursday": "7:00 AM - 7:00 PM",
+        "Friday": "7:00 AM - 7:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Low-income rate discounts and payment plan assistance"
+    },
+    {
+      "name": "Utah 211 Information & Referral",
+      "address": "1025 S 700 W, Salt Lake City, UT 84104",
+      "latitude": 40.7467,
+      "longitude": -111.9058,
+      "reviews": [],
+      "place_id": "ChIJ_utah211_01",
+      "types": [
+        "Community Service",
+        "Information & Referral",
+        "Crisis Support"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 312,
+      "price_level": 0,
+      "website": "https://www.utah211.org",
+      "contact_number": "211",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Free 24/7 helpline connecting residents to local health and social services"
+    },
+    {
+      "name": "SLC Volunteer Center",
+      "address": "231 E 400 S Suite 345, Salt Lake City, UT 84111",
+      "latitude": 40.7581,
+      "longitude": -111.8842,
+      "reviews": [],
+      "place_id": "ChIJ_slcvol01",
+      "types": [
+        "Non-Profit",
+        "Volunteer",
+        "Community Event"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 189,
+      "price_level": 0,
+      "website": "https://www.slcvolunteer.org",
+      "contact_number": "(801) 978-2452",
+      "opening_hours": {
+        "Monday": "9:00 AM - 5:00 PM",
+        "Tuesday": "9:00 AM - 5:00 PM",
+        "Wednesday": "9:00 AM - 5:00 PM",
+        "Thursday": "9:00 AM - 5:00 PM",
+        "Friday": "9:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Match volunteers with local nonprofits and community organizations"
+    },
+    {
+      "name": "Holiday Gift Drive",
+      "address": "975 S 300 W, Salt Lake City, UT 84101",
+      "latitude": 40.7499,
+      "longitude": -111.896,
+      "reviews": [],
+      "place_id": "ChIJ_holidaygift01",
+      "types": [
+        "Community Event",
+        "Donation Drive",
+        "Food & Nutrition"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 256,
+      "price_level": 0,
+      "website": null,
+      "contact_number": "(801) 363-1234",
+      "opening_hours": {
+        "Saturday": "10:00 AM - 3:00 PM",
+        "Sunday": "10:00 AM - 3:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free holiday gifts and meals for families in need during December"
+    },
+    {
+      "name": "SLC Earth Day Festival",
+      "address": "600 E 900 S, Salt Lake City, UT 84105",
+      "latitude": 40.7442,
+      "longitude": -111.8738,
+      "reviews": [],
+      "place_id": "ChIJ_earthday01",
+      "types": [
+        "Community Event",
+        "Environment",
+        "Annual Festival"
+      ],
+      "rating": 4.8,
+      "user_ratings_total": 712,
+      "price_level": 0,
+      "website": "https://www.slc.gov/sustainability",
+      "contact_number": "(801) 535-6999",
+      "opening_hours": {
+        "Saturday": "10:00 AM - 5:00 PM",
+        "Sunday": "Closed",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free family activities, live music, and vendor booths"
+    },
+    {
+      "name": "Salt Lake City Free WiFi Hotspots",
+      "address": "451 S State St, Salt Lake City, UT 84111",
+      "latitude": 40.756,
+      "longitude": -111.8882,
+      "reviews": [],
+      "place_id": "ChIJ_freewifi01",
+      "types": [
+        "Community Service",
+        "Education",
+        "Technology Access"
+      ],
+      "rating": 4.2,
+      "user_ratings_total": 122,
+      "price_level": 0,
+      "website": "https://www.slc.gov",
+      "contact_number": "(801) 535-7704",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Free public WiFi available at all SLC parks and libraries"
+    },
+    {
+      "name": "Glendale Neighborhood Watch Program",
+      "address": "1375 S 2100 W, Salt Lake City, UT 84119",
+      "latitude": 40.7411,
+      "longitude": -111.9385,
+      "reviews": [],
+      "place_id": "ChIJ_glendalewatch01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Safety"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 91,
+      "price_level": 0,
+      "website": "https://www.slcpd.com",
+      "contact_number": "(801) 799-3000",
+      "opening_hours": {
+        "Thursday": "6:30 PM - 8:00 PM",
+        "Monday": "Closed",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": null
+    },
+    {
+      "name": "SLC City Council Open Comment Session",
+      "address": "451 S State St, Salt Lake City, UT 84111",
+      "latitude": 40.756,
+      "longitude": -111.8882,
+      "reviews": [],
+      "place_id": "ChIJ_citycouncil01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Civic Engagement"
+      ],
+      "rating": 4.3,
+      "user_ratings_total": 65,
+      "price_level": 0,
+      "website": "https://www.slc.gov/council",
+      "contact_number": "(801) 535-7600",
+      "opening_hours": {
+        "Tuesday": "7:00 PM - 9:00 PM",
+        "Monday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Open to all residents. Interpreters available upon request."
+    },
+    {
+      "name": "Huntsman Mental Health Institute",
+      "address": "501 Chipeta Way, Salt Lake City, UT 84108",
+      "latitude": 40.765,
+      "longitude": -111.8435,
+      "reviews": [],
+      "place_id": "ChIJ_huntsman01",
+      "types": [
+        "Support Program",
+        "Mental Health",
+        "Inpatient & Outpatient"
+      ],
+      "rating": 4.5,
+      "user_ratings_total": 258,
+      "price_level": 2,
+      "website": "https://healthcare.utah.edu/hmhi",
+      "contact_number": "(801) 583-2500",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Financial assistance available for qualifying patients"
+    },
+    {
+      "name": "Utah Domestic Violence Coalition Hotline",
+      "address": "120 S 500 W, Salt Lake City, UT 84101",
+      "latitude": 40.7597,
+      "longitude": -111.9011,
+      "reviews": [],
+      "place_id": "ChIJ_utahdvc01",
+      "types": [
+        "Support Program",
+        "Domestic Violence",
+        "Crisis Support"
+      ],
+      "rating": 4.6,
+      "user_ratings_total": 122,
+      "price_level": 0,
+      "website": "https://www.udvc.org",
+      "contact_number": "1-800-897-5465",
+      "opening_hours": {
+        "Monday": "Open 24 Hours",
+        "Tuesday": "Open 24 Hours",
+        "Wednesday": "Open 24 Hours",
+        "Thursday": "Open 24 Hours",
+        "Friday": "Open 24 Hours",
+        "Saturday": "Open 24 Hours",
+        "Sunday": "Open 24 Hours"
+      },
+      "photos": null,
+      "special_offers": "Free statewide hotline referrals to local shelter and support services"
+    },
+    {
+      "name": "Baby Your Baby Program",
+      "address": "288 N 1460 W, Salt Lake City, UT 84116",
+      "latitude": 40.7741,
+      "longitude": -111.9234,
+      "reviews": [],
+      "place_id": "ChIJ_babyyourbaby01",
+      "types": [
+        "Support Program",
+        "Childcare & Family",
+        "Prenatal Care"
+      ],
+      "rating": 4.7,
+      "user_ratings_total": 156,
+      "price_level": 0,
+      "website": "https://www.health.utah.gov/byb",
+      "contact_number": "(801) 584-8226",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Free prenatal care coordination for low-income families"
+    },
+    {
+      "name": "UTA Ride to Wellness Program",
+      "address": "669 W 200 S, Salt Lake City, UT 84101",
+      "latitude": 40.7597,
+      "longitude": -111.9021,
+      "reviews": [],
+      "place_id": "ChIJ_utaride01",
+      "types": [
+        "Support Program",
+        "Transportation",
+        "Health & Wellness"
+      ],
+      "rating": 4.1,
+      "user_ratings_total": 234,
+      "price_level": 0,
+      "website": "https://www.rideuta.com",
+      "contact_number": "(801) 743-3882",
+      "opening_hours": {
+        "Monday": "6:00 AM - 10:00 PM",
+        "Tuesday": "6:00 AM - 10:00 PM",
+        "Wednesday": "6:00 AM - 10:00 PM",
+        "Thursday": "6:00 AM - 10:00 PM",
+        "Friday": "6:00 AM - 10:00 PM",
+        "Saturday": "7:00 AM - 9:00 PM",
+        "Sunday": "9:00 AM - 7:00 PM"
+      },
+      "photos": null,
+      "special_offers": "Free or reduced-fare transit passes for qualifying low-income residents"
+    },
+    {
+      "name": "Utah Refugee Services Office",
+      "address": "195 N 1950 W, Salt Lake City, UT 84116",
+      "latitude": 40.7756,
+      "longitude": -111.928,
+      "reviews": [],
+      "place_id": "ChIJ_refugeeservices01",
+      "types": [
+        "Community Service",
+        "Immigrant & Refugee Services",
+        "Benefits Assistance"
+      ],
+      "rating": 4.3,
+      "user_ratings_total": 144,
+      "price_level": 0,
+      "website": "https://jobs.utah.gov/refugee",
+      "contact_number": "(801) 526-9600",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Benefits eligibility, employment support, and refugee cash assistance"
+    },
+    {
+      "name": "Utah State Bar Lawyer Referral Service",
+      "address": "645 S 200 E, Salt Lake City, UT 84111",
+      "latitude": 40.7534,
+      "longitude": -111.8868,
+      "reviews": [],
+      "place_id": "ChIJ_utahbar01",
+      "types": [
+        "Community Service",
+        "Legal Aid",
+        "Lawyer Referral"
+      ],
+      "rating": 4.2,
+      "user_ratings_total": 188,
+      "price_level": 1,
+      "website": "https://www.utahbar.org",
+      "contact_number": "(801) 531-9077",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Low-cost initial consultations with licensed attorneys"
+    },
+    {
+      "name": "Neighborhood House Affordable Housing",
+      "address": "1050 W 200 N, Salt Lake City, UT 84116",
+      "latitude": 40.7716,
+      "longitude": -111.9148,
+      "reviews": [],
+      "place_id": "ChIJ_nbhhouse01",
+      "types": [
+        "Non-Profit",
+        "Housing & Shelter",
+        "Affordable Housing"
+      ],
+      "rating": 4.2,
+      "user_ratings_total": 76,
+      "price_level": 0,
+      "website": "https://www.nhslc.org",
+      "contact_number": "(801) 363-4589",
+      "opening_hours": {
+        "Monday": "8:30 AM - 5:00 PM",
+        "Tuesday": "8:30 AM - 5:00 PM",
+        "Wednesday": "8:30 AM - 5:00 PM",
+        "Thursday": "8:30 AM - 5:00 PM",
+        "Friday": "8:30 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": null
+    },
+    {
+      "name": "Utah Substance Use & Mental Health",
+      "address": "195 N 1950 W, Salt Lake City, UT 84116",
+      "latitude": 40.7756,
+      "longitude": -111.928,
+      "reviews": [],
+      "place_id": "ChIJ_sumh01",
+      "types": [
+        "Support Program",
+        "Substance Use Recovery",
+        "Treatment Referral"
+      ],
+      "rating": 4.1,
+      "user_ratings_total": 155,
+      "price_level": 0,
+      "website": "https://www.dsamh.utah.gov",
+      "contact_number": "(801) 538-3939",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "State-funded treatment programs for qualifying residents"
+    },
+    {
+      "name": "Westside Coalition Community Meeting",
+      "address": "750 N 900 W, Salt Lake City, UT 84116",
+      "latitude": 40.7789,
+      "longitude": -111.9105,
+      "reviews": [],
+      "place_id": "ChIJ_westside01",
+      "types": [
+        "Community Event",
+        "Neighborhood & Civic",
+        "Community Organizing"
+      ],
+      "rating": 4.4,
+      "user_ratings_total": 77,
+      "price_level": 0,
+      "website": null,
+      "contact_number": "(801) 535-6310",
+      "opening_hours": {
+        "Monday": "6:00 PM - 7:30 PM",
+        "Tuesday": "Closed",
+        "Wednesday": "Closed",
+        "Thursday": "Closed",
+        "Friday": "Closed",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": null
+    },
+    {
+      "name": "Questar Gas Energy Assistance",
+      "address": "1140 W 200 S, Salt Lake City, UT 84104",
+      "latitude": 40.7607,
+      "longitude": -111.9166,
+      "reviews": [],
+      "place_id": "ChIJ_questar01",
+      "types": [
+        "Support Program",
+        "Utility Assistance",
+        "Gas Bill Help"
+      ],
+      "rating": 3.7,
+      "user_ratings_total": 198,
+      "price_level": 0,
+      "website": "https://www.dominionenergy.com/utah",
+      "contact_number": "1-800-323-5517",
+      "opening_hours": {
+        "Monday": "7:00 AM - 6:00 PM",
+        "Tuesday": "7:00 AM - 6:00 PM",
+        "Wednesday": "7:00 AM - 6:00 PM",
+        "Thursday": "7:00 AM - 6:00 PM",
+        "Friday": "7:00 AM - 6:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Reduced rates and emergency shutoff protection for eligible customers"
+    },
+    {
+      "name": "Volunteers of America Utah Veterans Housing",
+      "address": "687 E 100 S, Salt Lake City, UT 84102",
+      "latitude": 40.7622,
+      "longitude": -111.8759,
+      "reviews": [],
+      "place_id": "ChIJ_voaveterans01",
+      "types": [
+        "Non-Profit",
+        "Veterans Services",
+        "Housing & Shelter"
+      ],
+      "rating": 4.3,
+      "user_ratings_total": 111,
+      "price_level": 0,
+      "website": "https://www.voa.org/utah",
+      "contact_number": "(801) 537-7770",
+      "opening_hours": {
+        "Monday": "8:00 AM - 5:00 PM",
+        "Tuesday": "8:00 AM - 5:00 PM",
+        "Wednesday": "8:00 AM - 5:00 PM",
+        "Thursday": "8:00 AM - 5:00 PM",
+        "Friday": "8:00 AM - 5:00 PM",
+        "Saturday": "Closed",
+        "Sunday": "Closed"
+      },
+      "photos": null,
+      "special_offers": "Transitional housing and supportive services for homeless veterans"
+    }
+  ],
+  "total": 100
+}
