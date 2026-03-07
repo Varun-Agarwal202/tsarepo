@@ -18,14 +18,14 @@ const Home = () => {
       <main id="main-content" className="flex-1 bf-hero-gradient" role="main">
         <section className="bf-page-shell max-w-6xl mx-auto grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-center pt-10 pb-16 lg:pt-16 lg:pb-24">
           <div className="space-y-7 text-left max-w-xl">
-            <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium bf-pill">
+            <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium bf-pill !text-slate-900 dark:!text-slate-100">
               <span className="h-1.5 w-1.5 rounded-full bg-sky-500 dark:bg-sky-400" />
               Community Resource Hub
             </span>
-            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight !text-slate-900 dark:!text-slate-50">
               {t('home.title', language)}
             </h1>
-            <p className="text-sm md:text-base text-slate-700 dark:text-slate-400 max-w-xl">
+            <p className="text-sm md:text-base !text-slate-700 dark:!text-slate-400 max-w-xl">
               {t('home.subtitle', language)}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -44,7 +44,7 @@ const Home = () => {
                 {t('home.suggestResource', language)}
               </button>
             </div>
-            <div className="flex flex-wrap gap-4 text-xs text-slate-700 dark:text-slate-500">
+            <div className="flex flex-wrap gap-4 text-xs !text-slate-700 dark:!text-slate-500">
               <span>• {t('home.features.interactiveMap', language)}</span>
               <span>• {t('home.features.searchFilter', language)}</span>
               <span>• {t('home.features.spotlight', language)}</span>

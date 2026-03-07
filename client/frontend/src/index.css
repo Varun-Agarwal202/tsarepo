@@ -38,7 +38,7 @@ body {
 
 :root[data-theme="light"] body {
   background: #ffffff;
-  color: var(--text-main);
+  color: #0f172a; /* Explicit dark color for light mode */
 }
 
 #root {
