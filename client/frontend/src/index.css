@@ -41,6 +41,19 @@ body {
   color: #0f172a; /* Explicit dark color for light mode */
 }
 
+/* Ensure text elements in light mode default to dark colors */
+:root[data-theme="light"] h1,
+:root[data-theme="light"] h2,
+:root[data-theme="light"] h3,
+:root[data-theme="light"] h4,
+:root[data-theme="light"] h5,
+:root[data-theme="light"] h6,
+:root[data-theme="light"] p,
+:root[data-theme="light"] span,
+:root[data-theme="light"] div {
+  color: inherit;
+}
+
 #root {
   min-height: 100vh;
 }
