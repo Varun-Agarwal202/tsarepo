@@ -37,7 +37,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ],
 }
-
+FIELD_ENCRYPTION_KEY = "EjYOPnSVVGUr_DrlnHOFXGU00TWvQuh6ZeOW8Ycf_-w="
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'encrypted_model_fields',
     # REST + Auth
     'rest_framework',
     'corsheaders',
@@ -145,15 +145,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Set default values for the environment variables if they’re not already set
 import os
 
+import dj_database_url
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("PGDATABASE", "railway"),  # default to Railway DB
-        "USER": os.environ.get("PGUSER", "postgres"),
-        "PASSWORD": os.environ.get("PGPASSWORD", "oFGrdmVIiyzvmJUsjTyHgfQxRDcoWQMG"),
-        "HOST": os.environ.get("PGHOST", "postgres.railway.internal"),
-        "PORT": os.environ.get("PGPORT", "5432"),
-    }
+    'default': dj_database_url.parse('postgresql://postgres:oFGrdmVIiyzvmJUsjTyHgfQxRDcoWQMG@hopper.proxy.rlwy.net:26148/railway')
 }
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
