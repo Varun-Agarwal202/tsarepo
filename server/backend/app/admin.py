@@ -12,7 +12,7 @@ class BusinessAdmin(admin.ModelAdmin):
             return "Save first"
         with connection.cursor() as cursor:
             cursor.execute(
-                "SELECT name, address, contact_number, website, special_offers, rating, latitude, longitude, price_level, user_ratings_total FROM api_business WHERE id = %s",
+                "SELECT name, address, contact_number, website, special_offers, rating, latitude, longitude, price_level, user_ratings_total FROM app_business WHERE id = %s",
                 [obj.pk]
             )
             row = cursor.fetchone()
