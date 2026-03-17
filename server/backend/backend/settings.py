@@ -145,9 +145,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Set default values for the environment variables if they’re not already set
 import os
 
-import dj_database_url
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://postgres:oFGrdmVIiyzvmJUsjTyHgfQxRDcoWQMG@hopper.proxy.rlwy.net:26148/railway')
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("PGDATABASE", "railway"),  # default to Railway DB
+        "USER": os.environ.get("PGUSER", "postgres"),
+        "PASSWORD": os.environ.get("PGPASSWORD", "oFGrdmVIiyzvmJUsjTyHgfQxRDcoWQMG"),
+        "HOST": os.environ.get("PGHOST", "postgres.railway.internal"),
+        "PORT": os.environ.get("PGPORT", "5432"),
+    }
 }
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
